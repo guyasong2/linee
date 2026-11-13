@@ -1,0 +1,59 @@
+{% load i18n static %}
+<footer class="bg-navy text-white">
+  <div class="container-page grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
+    <div>
+      <img
+        src="{% static 'img/linee-logo-light.png' %}"
+        alt="Linee"
+        width="104"
+        height="31"
+        class="h-7 w-auto"
+        loading="lazy"
+      >
+      <p class="mt-5 max-w-xs text-sm leading-6 text-white/60">
+        {% translate "Queue management, appointment booking and document readiness for essential services in Cameroon." %}
+      </p>
+      <p class="mt-4 text-xs text-white/45">Douala, Cameroon · English · Français</p>
+    </div>
+
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-white/40">{% translate "Explore" %}</p>
+      <ul class="mt-4 space-y-2.5 text-sm">
+        <li><a class="footer-link" href="{% url 'services:search' %}">{% translate "Find a service" %}</a></li>
+        <li><a class="footer-link" href="{% url 'public:home' %}#how-it-works">{% translate "How it works" %}</a></li>
+        <li><a class="footer-link" href="{% url 'public:home' %}#facilities">{% translate "For organizations" %}</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-white/40">{% translate "Account" %}</p>
+      <ul class="mt-4 space-y-2.5 text-sm">
+        {% if user.is_authenticated %}
+          <li><a class="footer-link" href="{% url 'accounts:account' %}">{% translate "My account" %}</a></li>
+          {% if nav_membership %}
+            <li><a class="footer-link" href="{% url 'organizations:dashboard' nav_membership.organization.slug %}">{% translate "Workspace" %}</a></li>
+          {% endif %}
+        {% else %}
+          <li><a class="footer-link" href="{% url 'accounts:login' %}">{% translate "Sign in" %}</a></li>
+          <li><a class="footer-link" href="{% url 'accounts:register' %}">{% translate "Create account" %}</a></li>
+        {% endif %}
+        <li><a class="footer-link" href="{% url 'public:privacy' %}">{% translate "Privacy notice" %}</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-white/40">{% translate "Contact" %}</p>
+      <ul class="mt-4 space-y-2.5 text-sm">
+        <li class="text-white/60">Douala, Cameroon</li>
+        <li><a class="footer-link" href="mailto:hello@linee.cm">hello@linee.cm</a></li>
+        <li><a class="footer-link" href="mailto:hello@linee.cm?subject=Linee%20demo">{% translate "Talk to us" %}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="container-page flex flex-col gap-2 py-5 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
+      <p>© {% now "Y" %} Linee. {% translate "Demonstration product." %}</p>
+      <p>{% translate "English and French. XAF. Africa/Douala." %}</p>
+    </div>
+  </div>
+</footer>

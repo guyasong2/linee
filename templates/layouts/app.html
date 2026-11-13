@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block body %}
+  {% include "components/public_nav.html" %}
+  <main id="main" class="min-h-[70vh] bg-mist py-10 sm:py-14">
+    <div class="container-page">
+      {% block app_content %}{% endblock %}
+    </div>
+  </main>
+  {% include "components/public_footer.html" %}
+{% endblock %}

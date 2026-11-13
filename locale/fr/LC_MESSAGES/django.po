@@ -1,0 +1,1624 @@
+# Linee French translation catalogue.
+# Copyright (C) 2026 Linee
+# This file is distributed under the same license as the Linee project.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Linee 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-13 03:09+0100\n"
+"PO-Revision-Date: 2026-11-13 01:50+0100\n"
+"Last-Translator: Linee\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps/accounts/forms.py:31
+msgid "Full name"
+msgstr "Nom complet"
+
+#: apps/accounts/forms.py:32
+msgid "Your name"
+msgstr "Votre nom"
+
+#: apps/accounts/forms.py:37 templates/accounts/account.html:27
+msgid "Phone number"
+msgstr "Numéro de téléphone"
+
+#: apps/accounts/forms.py:39 apps/accounts/forms.py:173
+msgid "+237 6 00 00 00 00"
+msgstr "+237 6 00 00 00 00"
+
+#: apps/accounts/forms.py:44 templates/accounts/account.html:31
+msgid "Email address"
+msgstr "Adresse e-mail"
+
+#: apps/accounts/forms.py:46 apps/accounts/forms.py:180
+msgid "you@example.com"
+msgstr "vous@exemple.com"
+
+#: apps/accounts/forms.py:50 apps/accounts/forms.py:184
+#: templates/accounts/account.html:35
+msgid "Preferred language"
+msgstr "Langue préférée"
+
+#: apps/accounts/forms.py:56 apps/accounts/forms.py:190
+#: apps/accounts/forms.py:313
+msgid "Password"
+msgstr "Mot de passe"
+
+#: apps/accounts/forms.py:58 apps/accounts/forms.py:192
+msgid "Use at least 12 characters."
+msgstr "Utilisez au moins 12 caractères."
+
+#: apps/accounts/forms.py:61 apps/accounts/forms.py:195
+msgid "Confirm password"
+msgstr "Confirmer le mot de passe"
+
+#: apps/accounts/forms.py:65 apps/accounts/forms.py:199
+msgid "I agree to the privacy notice."
+msgstr "J'accepte la politique de confidentialité."
+
+#: apps/accounts/forms.py:68
+msgid "Accept the privacy notice to create an account."
+msgstr "Acceptez la politique de confidentialité pour créer un compte."
+
+#: apps/accounts/forms.py:96
+msgid "Enter a phone number or an email address."
+msgstr "Saisissez un numéro de téléphone ou une adresse e-mail."
+
+#: apps/accounts/forms.py:100
+msgid "An account with this phone number already exists."
+msgstr "Un compte avec ce numéro de téléphone existe déjà."
+
+#: apps/accounts/forms.py:103
+msgid "An account with this email address already exists."
+msgstr "Un compte avec cette adresse e-mail existe déjà."
+
+#: apps/accounts/forms.py:108 apps/accounts/forms.py:265
+msgid "The two passwords do not match."
+msgstr "Les deux mots de passe ne correspondent pas."
+
+#: apps/accounts/forms.py:130
+msgid "Organization name"
+msgstr "Nom de l'organisation"
+
+#: apps/accounts/forms.py:132
+msgid "Example: Douala General Hospital"
+msgstr "Exemple : Hôpital Général de Douala"
+
+#: apps/accounts/forms.py:136
+msgid "Organization type"
+msgstr "Type d'organisation"
+
+#: apps/accounts/forms.py:137
+msgid "Select a type"
+msgstr "Sélectionnez un type"
+
+#: apps/accounts/forms.py:143
+msgid "City"
+msgstr "Ville"
+
+#: apps/accounts/forms.py:149
+msgid "Street address"
+msgstr "Adresse"
+
+#: apps/accounts/forms.py:155
+msgid "Organization phone"
+msgstr "Téléphone de l'organisation"
+
+#: apps/accounts/forms.py:160
+msgid "Organization email"
+msgstr "E-mail de l'organisation"
+
+#: apps/accounts/forms.py:165
+msgid "Your full name"
+msgstr "Votre nom complet"
+
+#: apps/accounts/forms.py:171
+msgid "Your phone number"
+msgstr "Votre numéro de téléphone"
+
+#: apps/accounts/forms.py:178
+msgid "Your email address"
+msgstr "Votre adresse e-mail"
+
+#: apps/accounts/forms.py:202
+msgid "Accept the privacy notice to register an organization."
+msgstr ""
+"Acceptez la politique de confidentialité pour enregistrer une organisation."
+
+#: apps/accounts/forms.py:245
+msgid ""
+"Add at least one contact for the organization: a phone number or an email "
+"address."
+msgstr ""
+"Ajoutez au moins un contact pour l'organisation : un numéro de téléphone ou "
+"une adresse e-mail."
+
+#: apps/accounts/forms.py:249
+msgid ""
+"Enter a phone number or an email address for your administrator account."
+msgstr ""
+"Saisissez un numéro de téléphone ou une adresse e-mail pour votre compte "
+"administrateur."
+
+#: apps/accounts/forms.py:254
+msgid "An account with this phone number already exists. Sign in instead."
+msgstr ""
+"Un compte avec ce numéro de téléphone existe déjà. Connectez-vous plutôt."
+
+#: apps/accounts/forms.py:259
+msgid "An account with this email address already exists. Sign in instead."
+msgstr ""
+"Un compte avec cette adresse e-mail existe déjà. Connectez-vous plutôt."
+
+#: apps/accounts/forms.py:307 apps/accounts/forms.py:309
+msgid "Phone or email"
+msgstr "Téléphone ou e-mail"
+
+#: apps/accounts/forms.py:319
+msgid "The phone number or email and password do not match an account."
+msgstr ""
+"Le numéro de téléphone ou l'e-mail et le mot de passe ne correspondent à "
+"aucun compte."
+
+#: apps/accounts/forms.py:321
+msgid "This account is inactive."
+msgstr "Ce compte est inactif."
+
+#: apps/accounts/views.py:71
+msgid "Your account is ready."
+msgstr "Votre compte est prêt."
+
+#: apps/accounts/views.py:107
+msgid ""
+"Organization registered. Complete the setup steps before it can appear "
+"publicly."
+msgstr ""
+"Organisation enregistrée. Terminez les étapes de configuration avant qu'elle "
+"puisse apparaître publiquement."
+
+#: apps/accounts/views.py:151
+msgid "You have signed out."
+msgstr "Vous êtes déconnecté."
+
+#: apps/organizations/models.py:14
+msgid "Pending setup"
+msgstr "En attente de configuration"
+
+#: apps/organizations/models.py:15
+msgid "Active"
+msgstr "Active"
+
+#: apps/organizations/models.py:16
+msgid "Suspended"
+msgstr "Suspendue"
+
+#: apps/organizations/models.py:19
+msgid "English"
+msgstr "Anglais"
+
+#: apps/organizations/models.py:20
+msgid "Français"
+msgstr "Français"
+
+#: apps/organizations/models.py:23
+msgid "Hospital"
+msgstr "Hôpital"
+
+#: apps/organizations/models.py:24
+msgid "Clinic"
+msgstr "Clinique"
+
+#: apps/organizations/models.py:25
+msgid "Government office"
+msgstr "Administration publique"
+
+#: apps/organizations/models.py:26 apps/services/models.py:20
+msgid "Civil registry"
+msgstr "État civil"
+
+#: apps/organizations/models.py:27
+msgid "Bank"
+msgstr "Banque"
+
+#: apps/organizations/models.py:28
+msgid "Other institution"
+msgstr "Autre institution"
+
+#: apps/services/models.py:16
+msgid "Consultation"
+msgstr "Consultation"
+
+#: apps/services/models.py:17
+msgid "Laboratory"
+msgstr "Laboratoire"
+
+#: apps/services/models.py:18
+msgid "Maternal health"
+msgstr "Santé maternelle"
+
+#: apps/services/models.py:19
+msgid "Pharmacy"
+msgstr "Pharmacie"
+
+#: apps/services/models.py:21
+msgid "Other"
+msgstr "Autre"
+
+#: templates/accounts/account.html:4 templates/accounts/account.html:11
+#: templates/components/public_footer.html:32
+#: templates/components/public_nav.html:24
+#: templates/components/public_nav.html:54
+msgid "My account"
+msgstr "Mon compte"
+
+#: templates/accounts/account.html:9 templates/components/public_footer.html:29
+msgid "Account"
+msgstr "Compte"
+
+#: templates/accounts/account.html:13
+msgid "Your contact details and organization access."
+msgstr "Vos coordonnées et vos accès aux organisations."
+
+#: templates/accounts/account.html:17 templates/components/public_nav.html:28
+#: templates/components/public_nav.html:57
+msgid "Sign out"
+msgstr "Se déconnecter"
+
+#: templates/accounts/account.html:24
+msgid "Profile"
+msgstr "Profil"
+
+#: templates/accounts/account.html:39
+msgid "Account type"
+msgstr "Type de compte"
+
+#: templates/accounts/account.html:41
+msgid "Organization administrator"
+msgstr "Administrateur d'organisation"
+
+#: templates/accounts/account.html:41
+msgid "Personal"
+msgstr "Personnel"
+
+#: templates/accounts/account.html:48
+msgid "Organizations"
+msgstr "Organisations"
+
+#: templates/accounts/account.html:62
+msgid "Open workspace"
+msgstr "Ouvrir l'espace"
+
+#: templates/accounts/account.html:69
+msgid ""
+"You do not manage an organization yet. Organization workspaces appear here "
+"when your account is added by an organization administrator."
+msgstr ""
+"Vous ne gérez encore aucune organisation. Les espaces d'organisation "
+"apparaissent ici lorsque votre compte est ajouté par un administrateur "
+"d'organisation."
+
+#: templates/accounts/account.html:77
+msgid "Tickets and appointments"
+msgstr "Tickets et rendez-vous"
+
+#: templates/accounts/account.html:79
+msgid "No tickets yet. When you book a visit, it will appear here."
+msgstr ""
+"Aucun ticket pour le moment. Lorsque vous réservez une visite, elle "
+"apparaîtra ici."
+
+#: templates/accounts/account.html:81
+#: templates/components/public_footer.html:22
+#: templates/components/public_nav.html:7
+#: templates/components/public_nav.html:47 templates/public/404.html:24
+#: templates/public/500.html:24 templates/public/home.html:22
+#: templates/public/home.html:98 templates/public/home.html:189
+#: templates/public/service_detail.html:19
+#: templates/public/service_search.html:4
+#: templates/public/service_search.html:19
+#: templates/public/service_search.html:24
+msgid "Find a service"
+msgstr "Trouver un service"
+
+#: templates/accounts/account.html:85
+msgid "Notifications"
+msgstr "Notifications"
+
+#: templates/accounts/account.html:87
+msgid ""
+"Appointment reminders and queue updates will appear here when notifications "
+"are enabled."
+msgstr ""
+"Les rappels de rendez-vous et les mises à jour de file apparaîtront ici "
+"lorsque les notifications seront activées."
+
+#: templates/accounts/login.html:4 templates/accounts/login.html:8
+#: templates/accounts/login.html:21 templates/accounts/register_choice.html:54
+#: templates/accounts/register_organization.html:78
+#: templates/accounts/register_person.html:54
+#: templates/components/public_footer.html:37
+#: templates/components/public_nav.html:31
+#: templates/components/public_nav.html:60
+msgid "Sign in"
+msgstr "Se connecter"
+
+#: templates/accounts/login.html:7
+msgid "Welcome back"
+msgstr "Bon retour"
+
+#: templates/accounts/login.html:10
+msgid "Use the phone number or email address on your account."
+msgstr ""
+"Utilisez le numéro de téléphone ou l'adresse e-mail associés à votre compte."
+
+#: templates/accounts/login.html:25
+msgid "New to Linee?"
+msgstr "Nouveau sur Linee ?"
+
+#: templates/accounts/login.html:26 templates/accounts/register_choice.html:4
+#: templates/accounts/register_choice.html:6
+#: templates/accounts/register_choice.html:17 templates/public/home.html:27
+#: templates/public/home.html:190
+msgid "Create an account"
+msgstr "Créer un compte"
+
+#: templates/accounts/register_choice.html:7
+msgid "Choose how you will use Linee."
+msgstr "Choisissez comment vous utiliserez Linee."
+
+#: templates/accounts/register_choice.html:8
+msgid ""
+"Choose a personal account to manage your visits, or an organization account "
+"to manage queues for an institution."
+msgstr ""
+"Choisissez un compte personnel pour gérer vos visites, ou un compte "
+"d'organisation pour gérer les files d'une institution."
+
+#: templates/accounts/register_choice.html:10
+msgid "Personal accounts hold tickets and appointments."
+msgstr "Les comptes personnels conservent vos tickets et rendez-vous."
+
+#: templates/accounts/register_choice.html:11
+msgid "Organization accounts manage branches and services."
+msgstr "Les comptes d'organisation gèrent les agences et les services."
+
+#: templates/accounts/register_choice.html:12
+msgid "Organizations are reviewed before they appear publicly."
+msgstr "Les organisations sont vérifiées avant d'apparaître publiquement."
+
+#: templates/accounts/register_choice.html:16
+msgid "Get started"
+msgstr "Commencer"
+
+#: templates/accounts/register_choice.html:19
+msgid "Choose the account that matches how you will use Linee."
+msgstr "Choisissez le compte correspondant à votre utilisation de Linee."
+
+#: templates/accounts/register_choice.html:31
+#: templates/accounts/register_person.html:10
+msgid "Personal account"
+msgstr "Compte personnel"
+
+#: templates/accounts/register_choice.html:32
+msgid "Book appointments, join queues and keep your tickets together."
+msgstr ""
+"Réservez des rendez-vous, rejoignez des files et conservez vos tickets au "
+"même endroit."
+
+#: templates/accounts/register_choice.html:45
+msgid "Organization or institution"
+msgstr "Organisation ou institution"
+
+#: templates/accounts/register_choice.html:46
+msgid "Register a hospital, office, bank or other service organization."
+msgstr ""
+"Enregistrez un hôpital, une administration, une banque ou une autre "
+"organisation de services."
+
+#: templates/accounts/register_choice.html:53
+#: templates/accounts/register_organization.html:77
+#: templates/accounts/register_person.html:53
+msgid "Already have an account?"
+msgstr "Vous avez déjà un compte ?"
+
+#: templates/accounts/register_organization.html:4
+msgid "Register an organization"
+msgstr "Enregistrer une organisation"
+
+#: templates/accounts/register_organization.html:6
+msgid "Set up your organization workspace."
+msgstr "Configurez l'espace de votre organisation."
+
+#: templates/accounts/register_organization.html:7
+msgid ""
+"Register the institution that provides the service. Linee will coordinate "
+"its queues, appointments and document checklists."
+msgstr ""
+"Enregistrez l'institution qui fournit le service. Linee coordonnera ses "
+"files, ses rendez-vous et ses listes de documents."
+
+#: templates/accounts/register_organization.html:9
+msgid "Add branches and the services each branch provides."
+msgstr "Ajoutez les agences et les services proposés par chaque agence."
+
+#: templates/accounts/register_organization.html:10
+msgid "Publish document checklists and queue rules."
+msgstr "Publiez les listes de documents et les règles de file."
+
+#: templates/accounts/register_organization.html:11
+msgid "Your organization stays private until review is complete."
+msgstr "Votre organisation reste privée jusqu'à la fin de l'examen."
+
+#: templates/accounts/register_organization.html:15
+msgid "Organization account"
+msgstr "Compte d'organisation"
+
+#: templates/accounts/register_organization.html:16
+#: templates/public/home.html:131
+msgid "Register your organization"
+msgstr "Enregistrez votre organisation"
+
+#: templates/accounts/register_organization.html:18
+msgid "You will be the first organization administrator."
+msgstr "Vous serez le premier administrateur de l'organisation."
+
+#: templates/accounts/register_organization.html:26
+msgid "Organization"
+msgstr "Organisation"
+
+#: templates/accounts/register_organization.html:44
+msgid "Administrator account"
+msgstr "Compte administrateur"
+
+#: templates/accounts/register_organization.html:65
+#: templates/accounts/register_person.html:41
+msgid "I agree to the"
+msgstr "J'accepte la"
+
+#: templates/accounts/register_organization.html:66
+#: templates/accounts/register_person.html:42
+msgid "privacy notice"
+msgstr "politique de confidentialité"
+
+#: templates/accounts/register_organization.html:72
+msgid "Register organization"
+msgstr "Enregistrer l'organisation"
+
+#: templates/accounts/register_organization.html:81
+msgid "Looking for a personal account?"
+msgstr "Vous cherchez un compte personnel ?"
+
+#: templates/accounts/register_organization.html:82
+#: templates/accounts/register_person.html:4
+#: templates/accounts/register_person.html:11
+msgid "Create a personal account"
+msgstr "Créer un compte personnel"
+
+#: templates/accounts/register_person.html:6
+msgid "Keep your visits in one account."
+msgstr "Conservez vos visites dans un seul compte."
+
+#: templates/accounts/register_person.html:7
+msgid ""
+"A personal account lets you book visits, join a queue and return to your "
+"ticket at any time."
+msgstr ""
+"Un compte personnel vous permet de réserver des visites, de rejoindre une "
+"file et de retrouver votre ticket à tout moment."
+
+#: templates/accounts/register_person.html:13
+msgid "Use a phone number, an email address, or both."
+msgstr "Utilisez un numéro de téléphone, une adresse e-mail, ou les deux."
+
+#: templates/accounts/register_person.html:48
+#: templates/components/public_footer.html:38
+#: templates/components/public_nav.html:33
+#: templates/components/public_nav.html:61
+msgid "Create account"
+msgstr "Créer un compte"
+
+#: templates/accounts/register_person.html:57
+msgid "Registering an institution?"
+msgstr "Vous enregistrez une institution ?"
+
+#: templates/accounts/register_person.html:58
+msgid "Create an organization account"
+msgstr "Créer un compte d'organisation"
+
+#: templates/base.html:8
+msgid ""
+"Join a queue, book an appointment, and know what to bring before you visit."
+msgstr ""
+"Rejoignez une file, réservez un rendez-vous et sachez quoi apporter avant "
+"votre visite."
+
+#: templates/base.html:20
+msgid "Skip to content"
+msgstr "Aller au contenu"
+
+#: templates/components/brand.html:2
+msgid "home"
+msgstr "accueil"
+
+#: templates/components/public_footer.html:14
+msgid ""
+"Queue management, appointment booking and document readiness for essential "
+"services in Cameroon."
+msgstr ""
+"Gestion des files d'attente, prise de rendez-vous et préparation des "
+"documents pour les services essentiels au Cameroun."
+
+#: templates/components/public_footer.html:20
+msgid "Explore"
+msgstr "Explorer"
+
+#: templates/components/public_footer.html:23
+#: templates/components/public_nav.html:8
+#: templates/components/public_nav.html:48 templates/public/home.html:86
+msgid "How it works"
+msgstr "Comment ça marche"
+
+#: templates/components/public_footer.html:24
+#: templates/components/public_nav.html:9
+#: templates/components/public_nav.html:49 templates/public/home.html:123
+msgid "For organizations"
+msgstr "Pour les organisations"
+
+#: templates/components/public_footer.html:34
+#: templates/components/public_nav.html:20
+#: templates/components/public_nav.html:52
+msgid "Workspace"
+msgstr "Espace de travail"
+
+#: templates/components/public_footer.html:40 templates/public/privacy.html:4
+#: templates/public/privacy.html:19 templates/public/privacy.html:24
+msgid "Privacy notice"
+msgstr "Politique de confidentialité"
+
+#: templates/components/public_footer.html:45 templates/public/privacy.html:82
+msgid "Contact"
+msgstr "Contact"
+
+#: templates/components/public_footer.html:49
+msgid "Talk to us"
+msgstr "Parlez-nous"
+
+#: templates/components/public_footer.html:55
+msgid "Demonstration product."
+msgstr "Produit de démonstration."
+
+#: templates/components/public_footer.html:56
+msgid "English and French. XAF. Africa/Douala."
+msgstr "Anglais et français. XAF. Africa/Douala."
+
+#: templates/components/public_nav.html:6
+msgid "Main navigation"
+msgstr "Navigation principale"
+
+#: templates/components/public_nav.html:37
+msgid "Open menu"
+msgstr "Ouvrir le menu"
+
+#: templates/components/public_nav.html:46
+msgid "Mobile navigation"
+msgstr "Navigation mobile"
+
+#: templates/components/service_card.html:8
+#: templates/public/service_detail.html:28
+msgid "Demo listing"
+msgstr "Annonce de démonstration"
+
+#: templates/components/service_card.html:27
+#: templates/public/service_detail.html:120
+msgid "Official fee"
+msgstr "Frais officiels"
+
+#: templates/components/service_card.html:28
+#: templates/public/service_detail.html:122
+msgid "No fee published"
+msgstr "Aucun frais publié"
+
+#: templates/components/service_card.html:35
+#, python-format
+msgid "%(minutes)s min"
+msgstr "%(minutes)s min"
+
+#: templates/layouts/auth.html:14 templates/public/404.html:14
+#: templates/public/404.html:23 templates/public/500.html:14
+#: templates/public/500.html:23 templates/public/csrf_failure.html:14
+#: templates/public/csrf_failure.html:28 templates/public/offline.html:14
+msgid "Back to Linee"
+msgstr "Retour à Linee"
+
+#: templates/layouts/auth.html:23
+msgid "Linee account"
+msgstr "Compte Linee"
+
+#: templates/layouts/auth.html:25
+msgid "Manage your visits from one account."
+msgstr "Gérez vos visites depuis un seul compte."
+
+#: templates/layouts/auth.html:28
+msgid "Sign in to see your tickets, appointments and organization workspace."
+msgstr ""
+"Connectez-vous pour voir vos tickets, vos rendez-vous et l'espace de votre "
+"organisation."
+
+#: templates/layouts/auth.html:32
+msgid "Book an appointment or join today's queue."
+msgstr "Réservez un rendez-vous ou rejoignez la file du jour."
+
+#: templates/layouts/auth.html:33
+msgid "Review the documents your visit requires."
+msgstr "Vérifiez les documents exigés pour votre visite."
+
+#: templates/layouts/auth.html:34
+msgid "Keep every ticket in one place."
+msgstr "Conservez chaque ticket au même endroit."
+
+#: templates/layouts/auth.html:39
+msgid ""
+"Linee coordinates access to services provided by participating organizations."
+msgstr ""
+"Linee coordonne l'accès aux services fournis par les organisations "
+"participantes."
+
+#: templates/organizations/dashboard.html:9
+msgid "Organization workspace"
+msgstr "Espace de l'organisation"
+
+#: templates/organizations/dashboard.html:20
+msgid ""
+"This organization is pending review. It is not visible to the public until a "
+"platform administrator activates it."
+msgstr ""
+"Cette organisation est en attente d'examen. Elle n'est pas visible du public "
+"tant qu'un administrateur de la plateforme ne l'a pas activée."
+
+#: templates/organizations/dashboard.html:26
+msgid "Branches"
+msgstr "Agences"
+
+#: templates/organizations/dashboard.html:30
+msgid "Services"
+msgstr "Services"
+
+#: templates/organizations/dashboard.html:34
+msgid "Team members"
+msgstr "Membres de l'équipe"
+
+#: templates/organizations/dashboard.html:41
+msgid "Setup"
+msgstr "Configuration"
+
+#: templates/organizations/dashboard.html:43
+msgid "Complete these steps before customers can find and use your services."
+msgstr ""
+"Terminez ces étapes avant que les usagers puissent trouver et utiliser vos "
+"services."
+
+#: templates/organizations/dashboard.html:50
+msgid "Organization profile"
+msgstr "Profil de l'organisation"
+
+#: templates/organizations/dashboard.html:51
+msgid "Name, type and contact details are recorded."
+msgstr "Le nom, le type et les coordonnées sont enregistrés."
+
+#: templates/organizations/dashboard.html:57
+msgid "Add your first branch"
+msgstr "Ajoutez votre première agence"
+
+#: templates/organizations/dashboard.html:58
+msgid "Branch management is the next module to be built."
+msgstr "La gestion des agences est le prochain module à construire."
+
+#: templates/organizations/dashboard.html:64
+msgid "Add services and document checklists"
+msgstr "Ajoutez des services et des listes de documents"
+
+#: templates/organizations/dashboard.html:65
+msgid "Services, counters and checklists follow branch setup."
+msgstr ""
+"Les services, guichets et listes de documents suivent la configuration des "
+"agences."
+
+#: templates/organizations/dashboard.html:71
+msgid "Request activation"
+msgstr "Demander l'activation"
+
+#: templates/organizations/dashboard.html:72
+msgid ""
+"A platform administrator reviews the configuration before it goes public."
+msgstr ""
+"Un administrateur de la plateforme vérifie la configuration avant sa "
+"publication."
+
+#: templates/organizations/dashboard.html:80
+msgid "Your role"
+msgstr "Votre rôle"
+
+#: templates/organizations/dashboard.html:86
+msgid "Organization-wide access"
+msgstr "Accès à toute l'organisation"
+
+#: templates/organizations/dashboard.html:92
+msgid "Organization details"
+msgstr "Détails de l'organisation"
+
+#: templates/organizations/dashboard.html:95
+msgid "Phone"
+msgstr "Téléphone"
+
+#: templates/organizations/dashboard.html:99
+msgid "Email"
+msgstr "E-mail"
+
+#: templates/organizations/dashboard.html:103
+msgid "Address"
+msgstr "Adresse"
+
+#: templates/public/404.html:4 templates/public/404.html:20
+msgid "Page not found"
+msgstr "Page introuvable"
+
+#: templates/public/404.html:21
+msgid "The page may have moved, or the link may be incomplete."
+msgstr "La page a peut-être été déplacée, ou le lien est incomplet."
+
+#: templates/public/500.html:4 templates/public/500.html:20
+msgid "Something went wrong"
+msgstr "Une erreur est survenue"
+
+#: templates/public/500.html:21
+msgid "The team has been notified. Please try again in a moment."
+msgstr "L'équipe a été prévenue. Veuillez réessayer dans un instant."
+
+#: templates/public/csrf_failure.html:4
+msgid "Session expired"
+msgstr "Session expirée"
+
+#: templates/public/csrf_failure.html:25
+msgid "Your session expired"
+msgstr "Votre session a expiré"
+
+#: templates/public/csrf_failure.html:26
+msgid "For your security, refresh the page and try again."
+msgstr "Pour votre sécurité, actualisez la page et réessayez."
+
+#: templates/public/home.html:4 templates/public/home.html:13
+msgid "Queue management for essential services"
+msgstr "Gestion des files d'attente pour les services essentiels"
+
+#: templates/public/home.html:15
+msgid "Join the queue before you leave home."
+msgstr "Rejoignez la file avant de quitter votre domicile."
+
+#: templates/public/home.html:18
+msgid ""
+"Book an appointment or join today's queue at a participating organization. "
+"Review what to bring, get a ticket, and track your place from your phone."
+msgstr ""
+"Réservez un rendez-vous ou rejoignez la file du jour auprès d'une "
+"organisation participante. Vérifiez ce qu'il faut apporter, obtenez un "
+"ticket et suivez votre place depuis votre téléphone."
+
+#: templates/public/home.html:30
+msgid "No smartphone app required. English and French."
+msgstr "Aucune application smartphone requise. Anglais et français."
+
+#: templates/public/home.html:35
+msgid "One visit, three steps"
+msgstr "Une visite, trois étapes"
+
+#: templates/public/home.html:40
+msgid "Choose a service"
+msgstr "Choisissez un service"
+
+#: templates/public/home.html:41
+msgid "See the organization, branch and services available to you."
+msgstr "Consultez l'organisation, l'agence et les services disponibles."
+
+#: templates/public/home.html:47
+msgid "Check what to bring"
+msgstr "Vérifiez ce qu'il faut apporter"
+
+#: templates/public/home.html:48
+msgid "Review the organization's document checklist before you travel."
+msgstr ""
+"Consultez la liste de documents de l'organisation avant de vous déplacer."
+
+#: templates/public/home.html:54
+msgid "Track your place"
+msgstr "Suivez votre place"
+
+#: templates/public/home.html:55
+msgid "Get a ticket and follow your position and estimated wait."
+msgstr "Obtenez un ticket et suivez votre position et l'attente estimée."
+
+#: templates/public/home.html:60
+msgid "Your ticket and checklist stay in your account."
+msgstr "Votre ticket et votre liste de documents restent dans votre compte."
+
+#: templates/public/home.html:70
+msgid "Works in a mobile browser"
+msgstr "Fonctionne dans un navigateur mobile"
+
+#: templates/public/home.html:74
+msgid "Appointments and same-day queues"
+msgstr "Rendez-vous et files du jour"
+
+#: templates/public/home.html:78
+msgid "Document checklists from the organization"
+msgstr "Listes de documents fournies par l'organisation"
+
+#: templates/public/home.html:88
+msgid "Four steps from search to service."
+msgstr "Quatre étapes de la recherche au service."
+
+#: templates/public/home.html:91
+msgid ""
+"Linee coordinates the queue. The organization provides the service and sets "
+"its requirements."
+msgstr ""
+"Linee coordonne la file. L'organisation fournit le service et définit ses "
+"exigences."
+
+#: templates/public/home.html:99
+msgid "Search by service, organization or branch."
+msgstr "Recherchez par service, organisation ou agence."
+
+#: templates/public/home.html:103
+msgid "Review the checklist"
+msgstr "Consultez la liste de documents"
+
+#: templates/public/home.html:104
+msgid "Confirm the documents, copies and conditions that apply."
+msgstr "Confirmez les documents, copies et conditions applicables."
+
+#: templates/public/home.html:108
+msgid "Book or join the queue"
+msgstr "Réservez ou rejoignez la file"
+
+#: templates/public/home.html:109
+msgid "Choose an appointment or join today's queue where available."
+msgstr ""
+"Choisissez un rendez-vous ou rejoignez la file du jour lorsqu'elle est "
+"disponible."
+
+#: templates/public/home.html:113
+msgid "Arrive at the right time"
+msgstr "Arrivez au bon moment"
+
+#: templates/public/home.html:114
+msgid "Track your ticket and attend when your turn is near."
+msgstr "Suivez votre ticket et présentez-vous lorsque votre tour approche."
+
+#: templates/public/home.html:125
+msgid "Manage your queue from one workspace."
+msgstr "Gérez votre file depuis un seul espace."
+
+#: templates/public/home.html:128
+msgid ""
+"Register your hospital, office, bank or other institution. Configure "
+"branches, services, checklists and counters, then let your staff serve "
+"people in order."
+msgstr ""
+"Enregistrez votre hôpital, administration, banque ou autre institution. "
+"Configurez les agences, services, listes de documents et guichets, puis "
+"laissez votre personnel servir les usagers dans l'ordre."
+
+#: templates/public/home.html:138
+msgid "Branches, services, fees and daily capacity in one place."
+msgstr "Agences, services, frais et capacité quotidienne au même endroit."
+
+#: templates/public/home.html:142
+msgid "Published document checklists with version history."
+msgstr "Listes de documents publiées avec historique des versions."
+
+#: templates/public/home.html:146
+msgid "A counter dashboard for calling, serving and closing tickets."
+msgstr ""
+"Un tableau de bord des guichets pour appeler, servir et clôturer les tickets."
+
+#: templates/public/home.html:150
+msgid "Role-based access, tenant isolation and an append-only audit log."
+msgstr ""
+"Accès selon les rôles, isolation des organisations et journal d'audit "
+"inaltérable."
+
+#: templates/public/home.html:159
+msgid "Clear boundaries"
+msgstr "Des limites claires"
+
+#: templates/public/home.html:161
+msgid "What Linee does not do."
+msgstr "Ce que Linee ne fait pas."
+
+#: templates/public/home.html:167
+msgid "We do not sell the service."
+msgstr "Nous ne vendons pas le service."
+
+#: templates/public/home.html:168
+msgid "The organization provides the service and owns its requirements."
+msgstr "L'organisation fournit le service et définit ses exigences."
+
+#: templates/public/home.html:171
+msgid "Payment does not change your place."
+msgstr "Le paiement ne change pas votre place."
+
+#: templates/public/home.html:172
+msgid ""
+"There is no paid priority. Queue order follows the organization's rules."
+msgstr ""
+"Il n'existe pas de priorité payante. L'ordre de la file suit les règles de "
+"l'organisation."
+
+#: templates/public/home.html:175
+msgid "We do not ask for document uploads."
+msgstr "Nous ne demandons pas de téléverser des documents."
+
+#: templates/public/home.html:176
+msgid ""
+"The checklist helps you prepare. It is not proof that you brought the "
+"documents."
+msgstr ""
+"La liste vous aide à vous préparer. Elle ne prouve pas que vous avez apporté "
+"les documents."
+
+#: templates/public/home.html:185
+msgid "Ready to get started?"
+msgstr "Prêt à commencer ?"
+
+#: templates/public/home.html:186
+msgid "Find a participating service or create an account."
+msgstr "Trouvez un service participant ou créez un compte."
+
+#: templates/public/offline.html:4 templates/public/offline.html:25
+msgid "You are offline"
+msgstr "Vous êtes hors ligne"
+
+#: templates/public/offline.html:26
+msgid ""
+"Linee needs a connection for live queue information and payments. Reconnect "
+"and try again."
+msgstr ""
+"Linee a besoin d'une connexion pour les informations de file en direct et "
+"les paiements. Reconnectez-vous et réessayez."
+
+#: templates/public/offline.html:28
+msgid "Try again"
+msgstr "Réessayer"
+
+#: templates/public/privacy.html:16 templates/public/service_detail.html:16
+#: templates/public/service_search.html:16
+msgid "Breadcrumb"
+msgstr "Fil d'Ariane"
+
+#: templates/public/privacy.html:17 templates/public/service_detail.html:17
+#: templates/public/service_search.html:17
+msgid "Home"
+msgstr "Accueil"
+
+#: templates/public/privacy.html:23
+msgid "Privacy and trust"
+msgstr "Confidentialité et confiance"
+
+#: templates/public/privacy.html:26
+msgid ""
+"Linee is built to collect less, store less and reveal less. This page "
+"explains exactly what a ticket needs — and what it never asks for."
+msgstr ""
+"Linee est conçue pour collecter moins, stocker moins et révéler moins. Cette "
+"page explique exactement ce dont un ticket a besoin — et ce qu'il ne demande "
+"jamais."
+
+#: templates/public/privacy.html:30
+msgid ""
+"Demonstration notice. A full legal notice will be published before "
+"production deployment."
+msgstr ""
+"Avis de démonstration. Une politique légale complète sera publiée avant le "
+"déploiement en production."
+
+#: templates/public/privacy.html:40
+msgid "What Linee is"
+msgstr "Ce qu'est Linee"
+
+#: templates/public/privacy.html:41
+msgid ""
+"Linee helps people discover essential services, prepare the required "
+"documents, pay published fees and track their place in a queue. The "
+"demonstration uses fictional facilities and simulated payments and SMS."
+msgstr ""
+"Linee aide les personnes à découvrir des services essentiels, préparer les "
+"documents requis, payer les tarifs publiés et suivre leur position dans une "
+"file d'attente. La démonstration utilise des établissements fictifs et des "
+"paiements et SMS simulés."
+
+#: templates/public/privacy.html:43
+msgid "Data minimisation"
+msgstr "Minimisation des données"
+
+#: templates/public/privacy.html:44
+msgid ""
+"We aim to collect only what is needed to issue and manage a ticket: an "
+"identifier, a phone number where available, the selected service, "
+"appointment or queue details, checklist acknowledgements, payment status and "
+"service outcomes."
+msgstr ""
+"Nous visons à collecter uniquement ce qui est nécessaire pour émettre et "
+"gérer un ticket : un identifiant, un numéro de téléphone lorsqu'il est "
+"disponible, le service choisi, les détails du rendez-vous ou de la file, les "
+"accusés de réception des listes de vérification, le statut du paiement et "
+"les résultats du service."
+
+#: templates/public/privacy.html:46
+msgid "What Linee does not collect"
+msgstr "Ce que Linee ne collecte pas"
+
+#: templates/public/privacy.html:55
+msgid "Medical records or clinical notes."
+msgstr "Dossiers médicaux ou notes cliniques."
+
+#: templates/public/privacy.html:63
+msgid "Copies of identity documents, test results or referral letters."
+msgstr ""
+"Copies de pièces d'identité, résultats d'analyses ou lettres d'adressage."
+
+#: templates/public/privacy.html:71
+msgid "Mobile money PINs or banking credentials."
+msgstr "Codes PIN de mobile money ou identifiants bancaires."
+
+#: templates/public/privacy.html:76
+msgid "Checklists are acknowledgements"
+msgstr "Les listes de vérification sont des accusés de réception"
+
+#: templates/public/privacy.html:77
+msgid ""
+"A checklist records which requirements you confirmed as ready. It does not "
+"upload or store the documents themselves."
+msgstr ""
+"Une liste de vérification enregistre les exigences que vous avez confirmées "
+"comme prêtes. Elle ne téléverse ni ne stocke les documents eux-mêmes."
+
+#: templates/public/privacy.html:79
+msgid "Your rights"
+msgstr "Vos droits"
+
+#: templates/public/privacy.html:80
+msgid ""
+"A production deployment will provide processes for access, correction, "
+"deletion and consent withdrawal, subject to applicable law and legitimate "
+"retention requirements. Cameroon’s personal data and cybersecurity "
+"legislation will be reviewed with qualified counsel before launch."
+msgstr ""
+"Un déploiement en production prévoira des processus d'accès, de correction, "
+"de suppression et de retrait du consentement, sous réserve du droit "
+"applicable et des exigences légitimes de conservation. La législation "
+"camerounaise sur les données personnelles et la cybersécurité sera examinée "
+"avec un conseil qualifié avant le lancement."
+
+#: templates/public/privacy.html:83
+msgid "For questions about this demonstration, contact"
+msgstr "Pour toute question sur cette démonstration, contactez"
+
+#: templates/public/service_detail.html:46
+msgid "About this service"
+msgstr "À propos de ce service"
+
+#: templates/public/service_detail.html:56
+msgid "Location"
+msgstr "Lieu"
+
+#: templates/public/service_detail.html:66
+msgid "Typical duration"
+msgstr "Durée typique"
+
+#: templates/public/service_detail.html:68
+#, python-format
+msgid "%(minutes)s minutes"
+msgstr "%(minutes)s minutes"
+
+#: templates/public/service_detail.html:76
+msgid "Language"
+msgstr "Langue"
+
+#: templates/public/service_detail.html:78
+msgid "English and French"
+msgstr "Anglais et français"
+
+#: templates/public/service_detail.html:83
+msgid "Before you visit"
+msgstr "Avant votre visite"
+
+#: templates/public/service_detail.html:85
+msgid ""
+"This facility’s approved document checklist will appear here once it is "
+"published. Linee never asks you to upload ID photos, medical records or test "
+"results."
+msgstr ""
+"La liste de documents approuvée par cet établissement apparaîtra ici dès sa "
+"publication. Linee ne vous demande jamais de téléverser des photos de pièce "
+"d'identité, des dossiers médicaux ou des résultats d'analyses."
+
+#: templates/public/service_detail.html:94
+msgid "See which documents are required and how many copies you need."
+msgstr ""
+"Voyez quels documents sont requis et combien de copies vous devez apporter."
+
+#: templates/public/service_detail.html:102
+msgid "Mark items as ready and see what is still missing."
+msgstr "Marquez les éléments comme prêts et voyez ce qui manque encore."
+
+#: templates/public/service_detail.html:110
+msgid ""
+"The checklist is provided by the organization that delivers the service."
+msgstr ""
+
+#: templates/public/service_detail.html:124
+msgid ""
+"The official fee set by the organization. Payment, where required, is "
+"handled by a clearly labelled simulated provider in this build."
+msgstr "Les frais officiels fixés par l'organisation. Le paiement, lorsqu'il est requis, est traité par un fournisseur simulé clairement identifié dans cette version."
+
+#: templates/public/service_detail.html:130
+msgid ""
+"Online booking and live queues are being enabled facility by facility. Ask "
+"at reception for the current process."
+msgstr ""
+"La réservation en ligne et les files en direct sont activées établissement "
+"par établissement. Renseignez-vous à l'accueil pour connaître le processus "
+"actuel."
+
+#: templates/public/service_detail.html:132
+msgid "Find another service"
+msgstr "Trouver un autre service"
+
+#: templates/public/service_detail.html:139
+msgid "Need help?"
+msgstr "Besoin d'aide ?"
+
+#: templates/public/service_detail.html:141
+msgid "Questions about this service or your visit? Write to the Linee team."
+msgstr "Des questions sur ce service ou votre visite ? Écrivez à l'équipe Linee."
+
+#: templates/public/service_search.html:23
+msgid "Service directory"
+msgstr "Répertoire des services"
+
+#: templates/public/service_search.html:26
+msgid ""
+"Search by service, organization, branch or city. Review what the "
+"organization requires before you travel."
+msgstr "Recherchez par service, organisation, agence ou ville. Vérifiez les exigences de l'organisation avant de vous déplacer."
+
+#: templates/public/service_search.html:37
+#: templates/public/service_search.html:38
+msgid "Search a service or facility"
+msgstr "Rechercher un service ou un établissement"
+
+#: templates/public/service_search.html:41
+msgid "Category"
+msgstr "Catégorie"
+
+#: templates/public/service_search.html:43
+msgid "All categories"
+msgstr "Toutes les catégories"
+
+#: templates/public/service_search.html:54
+msgid "Search"
+msgstr "Rechercher"
+
+#: templates/public/service_search.html:65
+#, python-format
+msgid "%(counter)s service found"
+msgid_plural "%(counter)s services found"
+msgstr[0] "%(counter)s service trouvé"
+msgstr[1] "%(counter)s services trouvés"
+
+#: templates/public/service_search.html:72
+#: templates/public/service_search.html:122
+msgid "Clear search"
+msgstr "Effacer la recherche"
+
+#: templates/public/service_search.html:85
+msgid "Pagination"
+msgstr "Pagination"
+
+#: templates/public/service_search.html:92
+msgid "Previous"
+msgstr "Précédent"
+
+#: templates/public/service_search.html:96
+#, python-format
+msgid "Page %(number)s of %(total)s"
+msgstr "Page %(number)s sur %(total)s"
+
+#: templates/public/service_search.html:100
+msgid "Next"
+msgstr "Suivant"
+
+#: templates/public/service_search.html:117
+msgid "No services found"
+msgstr "Aucun service trouvé"
+
+#: templates/public/service_search.html:119
+msgid "Try a different search term or clear the filters."
+msgstr "Essayez un autre terme de recherche ou effacez les filtres."
+
+#: templates/public/service_search.html:119
+msgid "Services will appear here as facilities publish them."
+msgstr ""
+"Les services apparaîtront ici au fur et à mesure que les établissements les "
+"publient."
+
+#: templates/public/service_search.html:128
+msgid ""
+"Demo listings are fictional and are used to validate the Linee experience. "
+"Fees and services shown here are not real facility pricing."
+msgstr ""
+"Les annonces de démonstration sont fictives et servent à valider "
+"l'expérience Linee. Les tarifs et services affichés ici ne correspondent pas "
+"à des prix réels d'établissement."
+
+#~ msgid "Receive a reminder before your appointment."
+#~ msgstr "Recevez un rappel avant votre rendez-vous."
+
+#~ msgid "Linee agents can register you without a smartphone or mobile data."
+#~ msgstr ""
+#~ "Les agents Linee peuvent vous inscrire sans smartphone ni données mobiles."
+
+#~ msgid "Published fee"
+#~ msgstr "Tarif publié"
+
+#~ msgid ""
+#~ "You do not manage an organization yet. Register one if you work for a "
+#~ "service institution."
+#~ msgstr ""
+#~ "Vous ne gérez encore aucune organisation. Enregistrez-en une si vous "
+#~ "travaillez dans une institution de service."
+
+#~ msgid "Shorter waits. No wasted trips."
+#~ msgstr "Moins d'attente. Aucun déplacement inutile."
+
+#~ msgid "Shorter waits."
+#~ msgstr "Moins d'attente."
+
+#~ msgid "No separate payment queue."
+#~ msgstr "Pas de file pour payer."
+
+#~ msgid "No wasted trips."
+#~ msgstr "Pas de trajet inutile."
+
+#~ msgid ""
+#~ "Linee helps you find a service, know exactly what to bring, pay the "
+#~ "official fee, and follow your place in line — from any phone."
+#~ msgstr ""
+#~ "Linee vous aide à trouver un service, savoir exactement quoi apporter, "
+#~ "payer le tarif officiel et suivre votre position dans la file — depuis "
+#~ "n'importe quel téléphone."
+
+#~ msgid "Preview"
+#~ msgstr "Aperçu"
+
+#~ msgid "Now serving"
+#~ msgstr "En cours de service"
+
+#~ msgid "Counter"
+#~ msgstr "Guichet"
+
+#~ msgid "Checklist"
+#~ msgstr "Liste de vérification"
+
+#~ msgid "3 of 3 ready"
+#~ msgstr "3 sur 3 prêts"
+
+#~ msgid "Your ticket"
+#~ msgstr "Votre ticket"
+
+#~ msgid "Estimated wait"
+#~ msgstr "Attente estimée"
+
+#~ msgid "A live estimate, not a false promise."
+#~ msgstr "Une estimation en direct, pas une fausse promesse."
+
+#~ msgid "Payment"
+#~ msgstr "Paiement"
+
+#~ msgid "Paid — simulated"
+#~ msgstr "Payé — simulé"
+
+#~ msgid "Hôpital Demo Bonanjo · Cardiology"
+#~ msgstr "Hôpital Demo Bonanjo · Cardiologie"
+
+#~ msgid "One ticket"
+#~ msgstr "Un seul ticket"
+
+#~ msgid "Discovery, checklist, payment and queue position in one place."
+#~ msgstr ""
+#~ "Découverte, liste de vérification, paiement et position dans la file au "
+#~ "même endroit."
+
+#~ msgid "Any phone"
+#~ msgstr "Tout téléphone"
+
+#~ msgid "A responsive web app for smartphones, plus SMS and USSD fallbacks."
+#~ msgstr ""
+#~ "Une application web responsive pour smartphones, avec des solutions de "
+#~ "repli par SMS et USSD."
+
+#~ msgid "No uploads"
+#~ msgstr "Aucun envoi de fichiers"
+
+#~ msgid "Linee never asks for ID photos, test results or medical records."
+#~ msgstr ""
+#~ "Linee ne demande jamais de photos de pièce d'identité, de résultats "
+#~ "d'analyses ou de dossiers médicaux."
+
+#~ msgid "Find the right service"
+#~ msgstr "Trouver le bon service"
+
+#~ msgid ""
+#~ "Compare hospitals, branches, official fees and expected waiting times."
+#~ msgstr ""
+#~ "Comparez les hôpitaux, les succursales, les tarifs officiels et les temps "
+#~ "d'attente estimés."
+
+#~ msgid "Learn more"
+#~ msgstr "En savoir plus"
+
+#~ msgid "Prepare every document"
+#~ msgstr "Préparer tous les documents"
+
+#~ msgid "Answer a few questions and see exactly what this facility requires."
+#~ msgstr ""
+#~ "Répondez à quelques questions et voyez exactement ce que cet "
+#~ "établissement exige."
+
+#~ msgid "Pay before you arrive"
+#~ msgstr "Payez avant d'arriver"
+
+#~ msgid ""
+#~ "Settle the published fee with mobile money. No separate cashier queue."
+#~ msgstr ""
+#~ "Réglez le tarif publié par mobile money. Pas de file d'attente séparée à "
+#~ "la caisse."
+
+#~ msgid "Follow your live position and get notified as your turn approaches."
+#~ msgstr ""
+#~ "Suivez votre position en direct et recevez une notification à l'approche "
+#~ "de votre tour."
+
+#~ msgid "The problem"
+#~ msgstr "Le problème"
+
+#~ msgid "The wait is not just the queue."
+#~ msgstr "L'attente ne se limite pas à la file."
+
+#~ msgid ""
+#~ "People lose hours — and sometimes a whole day — to unclear requirements, "
+#~ "repeated trips and queues that give no reliable information."
+#~ msgstr ""
+#~ "Les gens perdent des heures — parfois une journée entière — à cause "
+#~ "d'exigences peu claires, de déplacements répétés et de files sans "
+#~ "information fiable."
+
+#~ msgid "Missing papers"
+#~ msgstr "Documents manquants"
+
+#~ msgid ""
+#~ "A trip is wasted when the requirements were never clear in the first "
+#~ "place."
+#~ msgstr ""
+#~ "Un déplacement est gâché quand les exigences n'ont jamais été claires dès "
+#~ "le départ."
+
+#~ msgid "A second queue"
+#~ msgstr "Une deuxième file"
+
+#~ msgid "Paying at the cashier adds another wait before care even begins."
+#~ msgstr ""
+#~ "Payer à la caisse ajoute une attente supplémentaire avant même le début "
+#~ "des soins."
+
+#~ msgid "No reliable update"
+#~ msgstr "Aucune mise à jour fiable"
+
+#~ msgid ""
+#~ "People stay in the dark about their position, their turn and how long it "
+#~ "will take."
+#~ msgstr ""
+#~ "Les gens restent dans le flou sur leur position, leur tour et la durée "
+#~ "d'attente."
+
+#~ msgid "Designed for the last mile"
+#~ msgstr "Conçu pour le dernier kilomètre"
+
+#~ msgid "Practical infrastructure, not another app to learn."
+#~ msgstr ""
+#~ "Une infrastructure pratique, pas une application de plus à apprendre."
+
+#~ msgid ""
+#~ "Give every counter a clear view of the queue, every manager a live "
+#~ "picture of flow, and every patient an honest estimate. Configure "
+#~ "branches, services, fees, checklists and counters from one dashboard."
+#~ msgstr ""
+#~ "Donnez à chaque guichet une vue claire de la file, à chaque gestionnaire "
+#~ "une image en direct du flux, et à chaque patient une estimation honnête. "
+#~ "Configurez les succursales, les services, les tarifs, les listes de "
+#~ "vérification et les guichets depuis un seul tableau de bord."
+
+#~ msgid "Live queue position"
+#~ msgstr "Position en direct dans la file"
+
+#~ msgid "Honest ranges built from recent service times and open counters."
+#~ msgstr ""
+#~ "Des fourchettes honnêtes, basées sur les temps de service récents et les "
+#~ "guichets ouverts."
+
+#~ msgid "Document readiness"
+#~ msgstr "Préparation des documents"
+
+#~ msgid ""
+#~ "Facility-owned checklists, conditional questions and pre-visit reminders."
+#~ msgstr ""
+#~ "Listes de vérification propres à chaque établissement, questions "
+#~ "conditionnelles et rappels avant la visite."
+
+#~ msgid "Mobile money"
+#~ msgstr "Mobile money"
+
+#~ msgid ""
+#~ "Pay the official fee once, with a digital receipt and no PIN stored by "
+#~ "Linee."
+#~ msgstr ""
+#~ "Payez le tarif officiel une seule fois, avec un reçu numérique et sans "
+#~ "PIN stocké par Linee."
+
+#~ msgid "Works on basic phones"
+#~ msgstr "Fonctionne sur les téléphones de base"
+
+#~ msgid "SMS and USSD paths keep the service reachable without mobile data."
+#~ msgstr ""
+#~ "Les parcours SMS et USSD gardent le service accessible sans données "
+#~ "mobiles."
+
+#~ msgid "Family proxy"
+#~ msgstr "Représentation familiale"
+
+#~ msgid ""
+#~ "Authorise a trusted relative to hold your place with a one-time code."
+#~ msgstr ""
+#~ "Autorisez un proche de confiance à garder votre place avec un code à "
+#~ "usage unique."
+
+#~ msgid "Facility visibility"
+#~ msgstr "Visibilité pour l'établissement"
+
+#~ msgid ""
+#~ "Counters, managers and public displays share one reliable queue state."
+#~ msgstr ""
+#~ "Guichets, gestionnaires et écrans publics partagent un même état fiable "
+#~ "de la file."
+
+#~ msgid "Know before you go"
+#~ msgstr "Sachez avant de partir"
+
+#~ msgid "The document checklist your facility actually approves."
+#~ msgstr "La liste de documents que votre établissement approuve réellement."
+
+#~ msgid ""
+#~ "Linee turns a facility's requirements into a clear, bilingual checklist. "
+#~ "Mark what you have, see what is missing, and receive a reminder before "
+#~ "your visit."
+#~ msgstr ""
+#~ "Linee transforme les exigences d'un établissement en une liste de "
+#~ "vérification claire et bilingue. Cochez ce que vous avez, voyez ce qui "
+#~ "manque et recevez un rappel avant votre visite."
+
+#~ msgid "Requirements can change based on your answers."
+#~ msgstr "Les exigences peuvent changer selon vos réponses."
+
+#~ msgid "The exact checklist version is stored with your ticket."
+#~ msgstr ""
+#~ "La version exacte de la liste de vérification est enregistrée avec votre "
+#~ "ticket."
+
+#~ msgid "No document uploads and no medical records."
+#~ msgstr "Aucun envoi de documents et aucun dossier médical."
+
+#~ msgid "Example checklist"
+#~ msgstr "Liste de vérification exemple"
+
+#~ msgid "First antenatal visit"
+#~ msgstr "Première consultation prénatale"
+
+#~ msgid "Example"
+#~ msgstr "Exemple"
+
+#~ msgid "National ID card"
+#~ msgstr "Carte nationale d'identité"
+
+#~ msgid "Original, 1 copy"
+#~ msgstr "Original, 1 copie"
+
+#~ msgid "Proof of address"
+#~ msgstr "Justificatif de domicile"
+
+#~ msgid "Recent utility bill or attestation"
+#~ msgstr "Facture récente ou attestation"
+
+#~ msgid "Antenatal record book"
+#~ msgstr "Carnet de suivi prénatal"
+
+#~ msgid "If this is not your first visit"
+#~ msgstr "Si ce n'est pas votre première visite"
+
+#~ msgid "Payment receipt"
+#~ msgstr "Reçu de paiement"
+
+#~ msgid "If you paid through Linee"
+#~ msgstr "Si vous avez payé via Linee"
+
+#~ msgid "Example only. Each institution owns and approves its own checklist."
+#~ msgstr ""
+#~ "Exemple uniquement. Chaque institution possède et approuve sa propre "
+#~ "liste de vérification."
+
+#~ msgid "For facilities"
+#~ msgstr "Pour les établissements"
+
+#~ msgid "Built for the reality of the facility floor."
+#~ msgstr "Conçu pour la réalité du terrain."
+
+#~ msgid "Start here"
+#~ msgstr "Commencez ici"
+
+#~ msgid "Ready for a shorter wait?"
+#~ msgstr "Prêt pour moins d'attente ?"
+
+#~ msgid "Find a service near you and see what Linee can do."
+#~ msgstr ""
+#~ "Trouvez un service près de chez vous et découvrez ce que Linee peut faire."
+
+#~ msgid ""
+#~ "Find a service, prepare your documents, pay the official fee, and track "
+#~ "your place in line."
+#~ msgstr ""
+#~ "Trouvez un service, préparez vos documents, payez le tarif officiel et "
+#~ "suivez votre position dans la file."
+
+#~ msgid "Demo environment — payments and SMS are simulated."
+#~ msgstr ""
+#~ "Environnement de démonstration — les paiements et les SMS sont simulés."
+
+#~ msgid "Built for Douala. Designed for Cameroon."
+#~ msgstr "Conçu pour Douala. Pensé pour le Cameroun."
+
+#~ msgid "Trust"
+#~ msgstr "Confiance"
+
+#~ msgid "Contact the team"
+#~ msgstr "Contacter l'équipe"
+
+#~ msgid "Duration"
+#~ msgstr "Durée"
+
+#~ msgid "Search a hospital, branch or service"
+#~ msgstr "Rechercher un hôpital, une succursale ou un service"
+
+#~ msgid "Try"
+#~ msgstr "Essayez"
+
+#~ msgid "Ticket preview"
+#~ msgstr "Aperçu du ticket"
+
+#~ msgid "Explore services"
+#~ msgstr "Explorer les services"

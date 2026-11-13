@@ -1,0 +1,11 @@
+{% load i18n static %}
+<a href="{% url 'public:home' %}" class="group inline-flex items-center" aria-label="{{ SITE_NAME }} — {% translate 'home' %}">
+  <img
+    src="{% static 'img/linee-logo.png' %}"
+    alt="Linee"
+    width="120"
+    height="36"
+    class="h-8 w-auto sm:h-9"
+    fetchpriority="high"
+  >
+</a>

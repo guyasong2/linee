@@ -1,0 +1,85 @@
+{% extends "layouts/auth.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "Register an organization" %} · Linee{% endblock %}
+
+{% block aside_title %}{% translate "Set up your organization workspace." %}{% endblock %}
+{% block aside_text %}{% translate "Register the institution that provides the service. Linee will coordinate its queues, appointments and document checklists." %}{% endblock %}
+{% block aside_points %}
+  <li class="flex gap-3"><span class="check-dot" aria-hidden="true"></span>{% translate "Add branches and the services each branch provides." %}</li>
+  <li class="flex gap-3"><span class="check-dot" aria-hidden="true"></span>{% translate "Publish document checklists and queue rules." %}</li>
+  <li class="flex gap-3"><span class="check-dot" aria-hidden="true"></span>{% translate "Your organization stays private until review is complete." %}</li>
+{% endblock %}
+
+{% block auth_content %}
+  <p class="eyebrow">{% translate "Organization account" %}</p>
+  <h1 class="mt-3 font-display text-3xl font-semibold tracking-tight text-navy">{% translate "Register your organization" %}</h1>
+  <p class="mt-2 text-sm leading-6 text-ink/60">
+    {% translate "You will be the first organization administrator." %}
+  </p>
+
+  <form method="post" class="mt-8 space-y-6" novalidate>
+    {% csrf_token %}
+    {% include "components/form_errors.html" with form=form %}
+
+    <fieldset class="space-y-5 border-0 p-0">
+      <legend class="text-sm font-semibold text-ink">{% translate "Organization" %}</legend>
+
+      {% include "components/form_field.html" with field=form.organization_name %}
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        {% include "components/form_field.html" with field=form.organization_type %}
+        {% include "components/form_field.html" with field=form.city %}
+      </div>
+
+      {% include "components/form_field.html" with field=form.address %}
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        {% include "components/form_field.html" with field=form.organization_phone %}
+        {% include "components/form_field.html" with field=form.organization_email %}
+      </div>
+    </fieldset>
+
+    <fieldset class="space-y-5 border-x-0 border-b-0 border-t border-line p-0 pt-6">
+      <legend class="text-sm font-semibold text-ink">{% translate "Administrator account" %}</legend>
+
+      {% include "components/form_field.html" with field=form.admin_full_name %}
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        {% include "components/form_field.html" with field=form.admin_phone %}
+        {% include "components/form_field.html" with field=form.admin_email %}
+      </div>
+
+      {% include "components/form_field.html" with field=form.preferred_language %}
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        {% include "components/form_field.html" with field=form.password1 %}
+        {% include "components/form_field.html" with field=form.password2 %}
+      </div>
+    </fieldset>
+
+    <div>
+      <label class="flex items-start gap-3 text-sm leading-6 text-ink/70">
+        {{ form.accept_terms }}
+        <span>
+          {% translate "I agree to the" %}
+          <a href="{% url 'public:privacy' %}" class="font-medium text-brand-700 hover:text-brand-800">{% translate "privacy notice" %}</a>.
+        </span>
+      </label>
+      {% for error in form.accept_terms.errors %}<p class="form-error">{{ error }}</p>{% endfor %}
+    </div>
+
+    <button type="submit" class="btn-primary w-full">{% translate "Register organization" %}</button>
+  </form>
+
+  <div class="mt-6 space-y-2 text-sm text-ink/60">
+    <p>
+      {% translate "Already have an account?" %}
+      <a href="{% url 'accounts:login' %}" class="font-medium text-brand-700 hover:text-brand-800">{% translate "Sign in" %}</a>
+    </p>
+    <p>
+      {% translate "Looking for a personal account?" %}
+      <a href="{% url 'accounts:register_person' %}" class="font-medium text-brand-700 hover:text-brand-800">{% translate "Create a personal account" %}</a>
+    </p>
+  </div>
+{% endblock %}

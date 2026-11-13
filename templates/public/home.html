@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}Linee — {% translate "Queue management for essential services" %}{% endblock %}
+
+{% block body %}
+  {% include "components/public_nav.html" %}
+
+  <main id="main">
+    <section class="border-b border-line bg-white">
+      <div class="container-page grid gap-12 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-20">
+        <div>
+          <p class="eyebrow">{% translate "Queue management for essential services" %}</p>
+          <h1 class="mt-4 max-w-xl font-display text-4xl font-semibold leading-[1.1] tracking-tight text-navy sm:text-5xl">
+            {% translate "Join the queue before you leave home." %}
+          </h1>
+          <p class="mt-5 max-w-xl text-base leading-7 text-ink/65">
+            {% translate "Book an appointment or join today's queue at a participating organization. Review what to bring, get a ticket, and track your place from your phone." %}
+          </p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="{% url 'services:search' %}" class="btn-primary">
+              {% translate "Find a service" %}
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="{% url 'accounts:register' %}" class="btn-secondary">{% translate "Create an account" %}</a>
+          </div>
+          <p class="mt-4 text-xs text-ink/45">
+            {% translate "No smartphone app required. English and French." %}
+          </p>
+        </div>
+
+        <div class="rounded-lg border border-line bg-mist p-6 sm:p-8">
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-ink/45">{% translate "One visit, three steps" %}</p>
+          <ol class="mt-6 space-y-5">
+            <li class="flex gap-4">
+              <span class="step-number" aria-hidden="true">1</span>
+              <div>
+                <p class="text-sm font-semibold text-ink">{% translate "Choose a service" %}</p>
+                <p class="mt-1 text-sm leading-6 text-ink/60">{% translate "See the organization, branch and services available to you." %}</p>
+              </div>
+            </li>
+            <li class="flex gap-4">
+              <span class="step-number" aria-hidden="true">2</span>
+              <div>
+                <p class="text-sm font-semibold text-ink">{% translate "Check what to bring" %}</p>
+                <p class="mt-1 text-sm leading-6 text-ink/60">{% translate "Review the organization's document checklist before you travel." %}</p>
+              </div>
+            </li>
+            <li class="flex gap-4">
+              <span class="step-number" aria-hidden="true">3</span>
+              <div>
+                <p class="text-sm font-semibold text-ink">{% translate "Track your place" %}</p>
+                <p class="mt-1 text-sm leading-6 text-ink/60">{% translate "Get a ticket and follow your position and estimated wait." %}</p>
+              </div>
+            </li>
+          </ol>
+          <p class="mt-6 border-t border-line pt-5 text-xs leading-5 text-ink/45">
+            {% translate "Your ticket and checklist stay in your account." %}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-line bg-white">
+      <div class="container-page grid gap-4 py-6 text-sm text-ink/60 sm:grid-cols-3">
+        <p class="flex items-center gap-2">
+          <span class="h-1.5 w-1.5 rounded-full bg-brand-500" aria-hidden="true"></span>
+          {% translate "Works in a mobile browser" %}
+        </p>
+        <p class="flex items-center gap-2">
+          <span class="h-1.5 w-1.5 rounded-full bg-brand-500" aria-hidden="true"></span>
+          {% translate "Appointments and same-day queues" %}
+        </p>
+        <p class="flex items-center gap-2">
+          <span class="h-1.5 w-1.5 rounded-full bg-brand-500" aria-hidden="true"></span>
+          {% translate "Document checklists from the organization" %}
+        </p>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="section bg-mist">
+      <div class="container-page">
+        <div class="max-w-2xl">
+          <p class="eyebrow">{% translate "How it works" %}</p>
+          <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
+            {% translate "Four steps from search to service." %}
+          </h2>
+          <p class="mt-4 text-base leading-7 text-ink/65">
+            {% translate "Linee coordinates the queue. The organization provides the service and sets its requirements." %}
+          </p>
+        </div>
+
+        <ol class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <li class="card p-5">
+            <span class="step-number" aria-hidden="true">1</span>
+            <p class="mt-4 text-sm font-semibold text-ink">{% translate "Find a service" %}</p>
+            <p class="mt-1 text-sm leading-6 text-ink/60">{% translate "Search by service, organization or branch." %}</p>
+          </li>
+          <li class="card p-5">
+            <span class="step-number" aria-hidden="true">2</span>
+            <p class="mt-4 text-sm font-semibold text-ink">{% translate "Review the checklist" %}</p>
+            <p class="mt-1 text-sm leading-6 text-ink/60">{% translate "Confirm the documents, copies and conditions that apply." %}</p>
+          </li>
+          <li class="card p-5">
+            <span class="step-number" aria-hidden="true">3</span>
+            <p class="mt-4 text-sm font-semibold text-ink">{% translate "Book or join the queue" %}</p>
+            <p class="mt-1 text-sm leading-6 text-ink/60">{% translate "Choose an appointment or join today's queue where available." %}</p>
+          </li>
+          <li class="card p-5">
+            <span class="step-number" aria-hidden="true">4</span>
+            <p class="mt-4 text-sm font-semibold text-ink">{% translate "Arrive at the right time" %}</p>
+            <p class="mt-1 text-sm leading-6 text-ink/60">{% translate "Track your ticket and attend when your turn is near." %}</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="facilities" class="bg-navy text-white">
+      <div class="container-page grid gap-10 py-14 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:py-20">
+        <div>
+          <p class="eyebrow-light">{% translate "For organizations" %}</p>
+          <h2 class="mt-3 max-w-xl font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+            {% translate "Manage your queue from one workspace." %}
+          </h2>
+          <p class="mt-4 max-w-xl text-base leading-7 text-white/65">
+            {% translate "Register your hospital, office, bank or other institution. Configure branches, services, checklists and counters, then let your staff serve people in order." %}
+          </p>
+          <a href="{% url 'accounts:register_organization' %}" class="btn-ghost-light mt-8">
+            {% translate "Register your organization" %}
+          </a>
+        </div>
+
+        <ul class="space-y-4">
+          <li class="flex gap-3 border-b border-white/10 pb-4">
+            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-300" aria-hidden="true"></span>
+            <p class="text-sm leading-6 text-white/75">{% translate "Branches, services, fees and daily capacity in one place." %}</p>
+          </li>
+          <li class="flex gap-3 border-b border-white/10 pb-4">
+            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-300" aria-hidden="true"></span>
+            <p class="text-sm leading-6 text-white/75">{% translate "Published document checklists with version history." %}</p>
+          </li>
+          <li class="flex gap-3 border-b border-white/10 pb-4">
+            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-300" aria-hidden="true"></span>
+            <p class="text-sm leading-6 text-white/75">{% translate "A counter dashboard for calling, serving and closing tickets." %}</p>
+          </li>
+          <li class="flex gap-3">
+            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-300" aria-hidden="true"></span>
+            <p class="text-sm leading-6 text-white/75">{% translate "Role-based access, tenant isolation and an append-only audit log." %}</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section bg-white">
+      <div class="container-page">
+        <div class="max-w-2xl">
+          <p class="eyebrow">{% translate "Clear boundaries" %}</p>
+          <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
+            {% translate "What Linee does not do." %}
+          </h2>
+        </div>
+
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
+          <div class="card p-5">
+            <p class="text-sm font-semibold text-ink">{% translate "We do not sell the service." %}</p>
+            <p class="mt-2 text-sm leading-6 text-ink/60">{% translate "The organization provides the service and owns its requirements." %}</p>
+          </div>
+          <div class="card p-5">
+            <p class="text-sm font-semibold text-ink">{% translate "Payment does not change your place." %}</p>
+            <p class="mt-2 text-sm leading-6 text-ink/60">{% translate "There is no paid priority. Queue order follows the organization's rules." %}</p>
+          </div>
+          <div class="card p-5">
+            <p class="text-sm font-semibold text-ink">{% translate "We do not ask for document uploads." %}</p>
+            <p class="mt-2 text-sm leading-6 text-ink/60">{% translate "The checklist helps you prepare. It is not proof that you brought the documents." %}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-line bg-mist">
+      <div class="container-page flex flex-col gap-5 py-10 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h2 class="font-display text-2xl font-semibold tracking-tight text-navy">{% translate "Ready to get started?" %}</h2>
+          <p class="mt-1 text-sm text-ink/60">{% translate "Find a participating service or create an account." %}</p>
+        </div>
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <a href="{% url 'services:search' %}" class="btn-primary">{% translate "Find a service" %}</a>
+          <a href="{% url 'accounts:register' %}" class="btn-secondary">{% translate "Create an account" %}</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {% include "components/public_footer.html" %}
+{% endblock %}

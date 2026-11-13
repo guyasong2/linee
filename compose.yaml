@@ -1,0 +1,89 @@
+name: linee
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: linee
+      POSTGRES_USER: linee
+      POSTGRES_PASSWORD: linee_dev_password
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - linee_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U linee -d linee"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - linee_redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  web:
+    build: .
+    command: >
+      sh -c "/app/.venv/bin/python manage.py migrate &&
+             /app/.venv/bin/python manage.py runserver 0.0.0.0:8000"
+    env_file: .env
+    environment:
+      DB_HOST: db
+      DB_PORT: "5432"
+      REDIS_CACHE_URL: redis://redis:6379/0
+      REDIS_CELERY_URL: redis://redis:6379/1
+      REDIS_CHANNELS_URL: redis://redis:6379/2
+      DJANGO_SETTINGS_MODULE: config.settings.dev
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  worker:
+    build: .
+    command: /app/.venv/bin/celery -A config worker --loglevel=INFO
+    env_file: .env
+    environment:
+      DB_HOST: db
+      DB_PORT: "5432"
+      REDIS_CACHE_URL: redis://redis:6379/0
+      REDIS_CELERY_URL: redis://redis:6379/1
+      REDIS_CHANNELS_URL: redis://redis:6379/2
+      DJANGO_SETTINGS_MODULE: config.settings.dev
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  beat:
+    build: .
+    command: /app/.venv/bin/celery -A config beat --loglevel=INFO
+    env_file: .env
+    environment:
+      DB_HOST: db
+      DB_PORT: "5432"
+      REDIS_CACHE_URL: redis://redis:6379/0
+      REDIS_CELERY_URL: redis://redis:6379/1
+      REDIS_CHANNELS_URL: redis://redis:6379/2
+      DJANGO_SETTINGS_MODULE: config.settings.dev
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+volumes:
+  linee_postgres_data:
+  linee_redis_data:

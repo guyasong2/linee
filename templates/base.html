@@ -1,0 +1,38 @@
+{% load i18n static %}
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0f3b57">
+    <meta name="description" content="{% block meta_description %}{% translate 'Join a queue, book an appointment, and know what to bring before you visit.' %}{% endblock %}">
+    <title>{% block title %}{{ SITE_NAME }}{% endblock %}</title>
+    <link rel="manifest" href="{% static 'manifest.webmanifest' %}">
+    <link rel="icon" type="image/svg+xml" href="{% static 'img/icon.svg' %}">
+    <link rel="apple-touch-icon" href="{% static 'img/icon-180.png' %}">
+    <link rel="preload" href="{% static 'fonts/poppins-600.woff2' %}" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <script src="{% static 'js/vendor/htmx.min.js' %}" defer></script>
+    <script src="{% static 'js/app.js' %}" defer></script>
+    {% block extra_head %}{% endblock %}
+  </head>
+  <body class="min-h-screen bg-sand font-sans text-ink antialiased" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+    <a href="#main" class="skip-link">{% translate "Skip to content" %}</a>
+
+    {% if messages %}
+      <div class="border-b border-line bg-mist">
+        <div class="container-page space-y-1 py-3">
+          {% for message in messages %}
+            <p class="text-sm {% if message.tags == 'error' %}text-red-700{% else %}text-brand-800{% endif %}">
+              {{ message }}
+            </p>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% block body %}{% endblock %}
+
+    {% block extra_scripts %}{% endblock %}
+  </body>
+</html>

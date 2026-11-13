@@ -1,0 +1,92 @@
+{% extends "layouts/app.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "My account" %} · Linee{% endblock %}
+
+{% block app_content %}
+  <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+    <div>
+      <p class="eyebrow">{% translate "Account" %}</p>
+      <h1 class="mt-2 font-display text-3xl font-semibold tracking-tight text-navy">
+        {% if user.full_name %}{{ user.full_name }}{% else %}{% translate "My account" %}{% endif %}
+      </h1>
+      <p class="mt-2 text-sm text-ink/60">{% translate "Your contact details and organization access." %}</p>
+    </div>
+    <form method="post" action="{% url 'accounts:logout' %}">
+      {% csrf_token %}
+      <button type="submit" class="btn-secondary">{% translate "Sign out" %}</button>
+    </form>
+  </div>
+
+  <div class="mt-8 grid gap-6 lg:grid-cols-3">
+    <div class="space-y-6 lg:col-span-2">
+      <section class="card p-6">
+        <h2 class="text-base font-semibold text-ink">{% translate "Profile" %}</h2>
+        <dl class="mt-5 grid gap-4 text-sm sm:grid-cols-2">
+          <div>
+            <dt class="text-ink/50">{% translate "Phone number" %}</dt>
+            <dd class="mt-1 font-medium text-ink">{{ user.phone|default:"—" }}</dd>
+          </div>
+          <div>
+            <dt class="text-ink/50">{% translate "Email address" %}</dt>
+            <dd class="mt-1 font-medium text-ink">{{ user.email|default:"—" }}</dd>
+          </div>
+          <div>
+            <dt class="text-ink/50">{% translate "Preferred language" %}</dt>
+            <dd class="mt-1 font-medium text-ink">{{ user.get_preferred_language_display }}</dd>
+          </div>
+          <div>
+            <dt class="text-ink/50">{% translate "Account type" %}</dt>
+            <dd class="mt-1 font-medium text-ink">
+              {% if memberships %}{% translate "Organization administrator" %}{% else %}{% translate "Personal" %}{% endif %}
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="card p-6">
+        <h2 class="text-base font-semibold text-ink">{% translate "Organizations" %}</h2>
+
+        {% if memberships %}
+          <ul class="mt-4 divide-y divide-line">
+            {% for membership in memberships %}
+              <li class="flex flex-col gap-1 py-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p class="text-sm font-medium text-ink">{{ membership.organization.name }}</p>
+                  <p class="mt-0.5 text-xs text-ink/50">
+                    {{ membership.get_role_display }}
+                    {% if membership.branch %} · {{ membership.branch.name }}{% endif %}
+                  </p>
+                </div>
+                <a href="{% url 'organizations:dashboard' membership.organization.slug %}" class="mt-2 text-sm font-medium text-brand-700 hover:text-brand-800 sm:mt-0">
+                  {% translate "Open workspace" %} →
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="mt-4 text-sm leading-6 text-ink/60">
+            {% translate "You do not manage an organization yet. Organization workspaces appear here when your account is added by an organization administrator." %}
+          </p>
+        {% endif %}
+      </section>
+    </div>
+
+    <aside class="space-y-6">
+      <section class="card p-6">
+        <h2 class="text-base font-semibold text-ink">{% translate "Tickets and appointments" %}</h2>
+        <p class="mt-3 text-sm leading-6 text-ink/60">
+          {% translate "No tickets yet. When you book a visit, it will appear here." %}
+        </p>
+        <a href="{% url 'services:search' %}" class="btn-secondary mt-5 w-full">{% translate "Find a service" %}</a>
+      </section>
+
+      <section class="card p-6">
+        <h2 class="text-base font-semibold text-ink">{% translate "Notifications" %}</h2>
+        <p class="mt-3 text-sm leading-6 text-ink/60">
+          {% translate "Appointment reminders and queue updates will appear here when notifications are enabled." %}
+        </p>
+      </section>
+    </aside>
+  </div>
+{% endblock %}

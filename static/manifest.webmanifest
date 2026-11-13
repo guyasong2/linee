@@ -1,0 +1,44 @@
+{
+  "name": "Linee — Shorter waits",
+  "short_name": "Linee",
+  "description": "Find a service, prepare your documents, pay the official fee, and track your place in line.",
+  "start_url": "/en/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#e3fcf9",
+  "theme_color": "#4a89ac",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/static/img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/static/img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/static/img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/static/img/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Find a service",
+      "short_name": "Find",
+      "url": "/en/find/"
+    }
+  ]
+}

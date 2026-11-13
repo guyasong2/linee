@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+.venv
+node_modules
+staticfiles
+media
+static/css/app.css
+static/js/vendor
+__pycache__
+*.pyc
+.pytest_cache
+.coverage
+htmlcov
+.git
+.github
+docs
