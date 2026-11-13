@@ -1,0 +1,212 @@
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/poppins-400.9212f6f9860f.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/poppins-500.a09f2fccfee3.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/poppins-600.72993dddf88a.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/poppins-700.25b0e113ca7c.woff2") format("woff2");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-sand text-ink;
+  }
+
+  ::selection {
+    @apply bg-brand-100 text-navy;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-white;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-navy focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-white;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-brand-600 px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700 focus-visible:ring-brand-600 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-navy px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-800 focus-visible:ring-white focus-visible:ring-offset-navy disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-line bg-white px-6 py-3.5 text-sm font-semibold text-ink transition hover:border-brand-400 hover:text-brand-700 focus-visible:ring-brand-600 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-ghost-light {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-white/35 bg-transparent px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/60 hover:bg-white/10 focus-visible:ring-white disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-brand-600;
+  }
+
+  .eyebrow-light {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-brand-200;
+  }
+
+  .nav-link {
+    @apply text-sm font-medium text-ink/65 transition hover:text-brand-700;
+  }
+
+  .mobile-link {
+    @apply block rounded-md px-3 py-3 text-sm font-medium text-ink/75 transition hover:bg-mist hover:text-brand-700;
+  }
+
+  .footer-link {
+    @apply text-white/60 transition hover:text-white;
+  }
+
+  .card {
+    @apply rounded-lg border border-line bg-white;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full bg-brand-50 px-2.5 py-1 text-[11px] font-semibold text-brand-800 ring-1 ring-inset ring-brand-200;
+  }
+
+  .icon-circle {
+    @apply grid h-12 w-12 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-100;
+  }
+
+  .icon-circle-sm {
+    @apply grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-100;
+  }
+
+  .link-arrow {
+    @apply inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition hover:text-brand-800;
+  }
+
+  .section {
+    @apply py-16 sm:py-20;
+  }
+
+  .section-muted {
+    @apply bg-mist;
+  }
+
+  .section-heading {
+    @apply font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl;
+  }
+
+  .hero-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  .dotted-grid {
+    background-image: radial-gradient(currentColor 1.5px, transparent 1.5px);
+    background-size: 16px 16px;
+  }
+
+  .page-hero {
+    @apply relative overflow-hidden bg-navy text-white;
+  }
+
+  .form-label {
+    @apply mb-1.5 block text-sm font-medium text-ink;
+  }
+
+  .form-input {
+    @apply block w-full min-w-0 rounded-md border border-line bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/35 focus:border-brand-500 focus:ring-brand-500;
+  }
+
+  .form-select {
+    @apply block w-full rounded-md border border-line bg-white px-3.5 py-2.5 text-sm text-ink focus:border-brand-500 focus:ring-brand-500;
+  }
+
+  .form-checkbox {
+    @apply mt-0.5 h-4 w-4 shrink-0 rounded border-line text-brand-600 focus:ring-brand-500;
+  }
+
+  .form-help {
+    @apply mt-1.5 text-xs leading-5 text-ink/50;
+  }
+
+  .form-error {
+    @apply mt-1.5 text-xs font-medium text-red-700;
+  }
+
+  .choice-card {
+    @apply flex items-center gap-4 rounded-lg border border-line bg-white p-4 transition hover:border-brand-300 hover:bg-brand-50/40 focus-visible:ring-brand-600;
+  }
+
+  .choice-icon {
+    @apply grid h-11 w-11 shrink-0 place-items-center rounded-md bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-100;
+  }
+
+  .step-number {
+    @apply grid h-7 w-7 shrink-0 place-items-center rounded-md bg-brand-50 text-xs font-semibold text-brand-700 ring-1 ring-inset ring-brand-200;
+  }
+
+  .check-dot {
+    @apply mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full border border-brand-300 bg-white;
+  }
+
+  .list-dot {
+    @apply mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

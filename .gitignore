@@ -1,6 +1,7 @@
 .env
 .env.*
 !.env.example
+.env.local
 .venv/
 __pycache__/
 *.py[cod]
@@ -13,7 +14,6 @@ htmlcov/
 node_modules/
 static/css/app.css
 static/js/vendor/
-staticfiles/
 media/
 dist/
 build/
@@ -22,3 +22,5 @@ build/
 .idea/
 .vscode/
 *.log
+.vercel
+.env*
