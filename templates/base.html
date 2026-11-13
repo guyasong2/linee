@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#0f3b57">
+    <meta name="theme-color" content="#2563eb">
     <meta name="description" content="{% block meta_description %}{% translate 'Join a queue, book an appointment, and know what to bring before you visit.' %}{% endblock %}">
     <title>{% block title %}{{ SITE_NAME }}{% endblock %}</title>
     <link rel="manifest" href="{% static 'manifest.webmanifest' %}">
@@ -20,10 +20,10 @@
     <a href="#main" class="skip-link">{% translate "Skip to content" %}</a>
 
     {% if messages %}
-      <div class="border-b border-line bg-mist">
+      <div class="border-b border-brand-100 bg-brand-50/70">
         <div class="container-page space-y-1 py-3">
           {% for message in messages %}
-            <p class="text-sm {% if message.tags == 'error' %}text-red-700{% else %}text-brand-800{% endif %}">
+            <p class="text-sm font-medium {% if message.tags == 'error' %}text-red-600{% else %}text-brand-900{% endif %}">
               {{ message }}
             </p>
           {% endfor %}

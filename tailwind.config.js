@@ -9,25 +9,24 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        ink: "#142c3a",
-        navy: "#0f3b57",
+        ink: "#0f172a",
+        navy: "#0f284e",
         sand: "#ffffff",
-        mist: "#f2f8fb",
-        line: "#dce7ee",
+        mist: "#f8fafc",
+        line: "#e2e8f0",
         brand: {
-          50: "#f2f8fc",
-          100: "#e4f1f8",
-          200: "#c9e3f1",
-          300: "#a3cfe5",
-          400: "#78b4d3",
-          500: "#4a89ac",
-          600: "#3d7595",
-          700: "#315f7a",
-          800: "#2a4e63",
-          900: "#203e50",
-          950: "#122e40",
+          50: "#eff6ff",
+          100: "#dbeafe",
+          200: "#bfdbfe",
+          300: "#93c5fd",
+          400: "#60a5fa",
+          500: "#3b82f6",
+          600: "#2563eb",
+          700: "#1d4ed8",
+          800: "#1e40af",
+          900: "#1e3a8a",
+          950: "#0f2347",
         },
-        aqua: "#ace5f6",
       },
       fontFamily: {
         sans: [
@@ -51,8 +50,9 @@ module.exports = {
         ],
       },
       boxShadow: {
-        card: "0 1px 0 rgba(15,59,87,0.03), 0 18px 45px -30px rgba(15,59,87,0.35)",
-        hero: "0 40px 90px -40px rgba(0,0,0,0.55)",
+        subtle: "0 1px 2px 0 rgba(15, 23, 42, 0.04)",
+        card: "0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 1px 2px -1px rgba(15, 23, 42, 0.04)",
+        hero: "0 12px 32px -8px rgba(37, 99, 235, 0.12)",
       },
       borderRadius: {
         "4xl": "2rem",
@@ -64,3 +64,4 @@ module.exports = {
   },
   plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography")],
 };
+

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from pathlib import Path
 
-import redis
 from django.conf import settings
 from django.db import connection
 from django.http import Http404, HttpRequest, HttpResponse, JsonResponse
@@ -31,13 +30,14 @@ def health_ready(request: HttpRequest) -> JsonResponse:
         failures.append("database")
 
     try:
-        client = redis.Redis.from_url(
-            settings.CACHES["default"]["LOCATION"],
-            socket_connect_timeout=1,
-            socket_timeout=1,
-        )
-        client.ping()
-        checks["cache"] = "ok"
+        from django.core.cache import cache
+
+        cache.set("_health_check", "1", timeout=5)
+        if cache.get("_health_check") == "1":
+            checks["cache"] = "ok"
+        else:
+            checks["cache"] = "unavailable"
+            failures.append("cache")
     except Exception:
         checks["cache"] = "unavailable"
         failures.append("cache")

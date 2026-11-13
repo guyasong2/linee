@@ -8,38 +8,34 @@
 
   <main id="main">
     <section class="page-hero">
-      <div class="hero-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
-      <div class="pointer-events-none absolute -right-20 -top-10 h-64 w-64 text-white/10 dotted-grid" aria-hidden="true"></div>
-      <div class="pointer-events-none absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-brand-500/25 blur-[110px]" aria-hidden="true"></div>
-
-      <div class="container-page relative py-12 sm:py-16">
-        <nav aria-label="{% translate 'Breadcrumb' %}" class="flex items-center gap-2 text-xs font-medium text-white/50">
+      <div class="container-page py-12 sm:py-16">
+        <nav aria-label="{% translate 'Breadcrumb' %}" class="flex items-center gap-2 text-xs font-medium text-white/60">
           <a href="{% url 'public:home' %}" class="transition hover:text-white">{% translate "Home" %}</a>
-          <span aria-hidden="true">/</span>
-          <span class="text-white/80">{% translate "Find a service" %}</span>
+          <span aria-hidden="true" class="text-white/40">/</span>
+          <span class="text-white">{% translate "Find a service" %}</span>
         </nav>
 
-        <div class="mt-7 max-w-3xl">
+        <div class="mt-6 max-w-3xl">
           <p class="eyebrow-light">{% translate "Service directory" %}</p>
-          <h1 class="mt-4 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">{% translate "Find a service" %}</h1>
-          <p class="mt-4 max-w-2xl text-base leading-7 text-white/65">
+          <h1 class="mt-3 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">{% translate "Find a service" %}</h1>
+          <p class="mt-3 max-w-2xl text-base leading-7 text-white/75">
             {% translate "Search by service, organization, branch or city. Review what the organization requires before you travel." %}
           </p>
         </div>
 
-        <form action="{% url 'services:search' %}" method="get" class="relative mt-9 rounded-lg bg-white p-3 shadow-hero" role="search">
+        <form action="{% url 'services:search' %}" method="get" class="relative mt-8 rounded-xl bg-white p-3 shadow-hero" role="search">
           <div class="grid gap-3 md:grid-cols-[1fr_14rem_auto]">
-            <div class="flex items-center gap-3 rounded-md border border-line bg-white px-3.5 focus-within:border-brand-500">
-              <svg class="h-5 w-5 shrink-0 text-ink/35" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <div class="flex items-center gap-3 rounded-lg border border-line bg-white px-3.5 focus-within:border-brand-600 focus-within:ring-1 focus-within:ring-brand-600">
+              <svg class="h-5 w-5 shrink-0 text-slate-400" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                 <circle cx="9" cy="9" r="5.5" stroke="currentColor" stroke-width="1.6"/>
                 <path d="m13 13 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
               </svg>
               <label for="service-search" class="sr-only">{% translate "Search a service or facility" %}</label>
-              <input id="service-search" name="q" value="{{ query }}" type="search" autocomplete="off" placeholder="{% translate 'Search a service or facility' %}" class="w-full border-0 bg-transparent p-0 text-sm text-ink placeholder:text-ink/35 focus:ring-0">
+              <input id="service-search" name="q" value="{{ query }}" type="search" autocomplete="off" placeholder="{% translate 'Search a service or facility' %}" class="w-full border-0 bg-transparent p-0 text-sm text-ink placeholder:text-slate-400 focus:ring-0">
             </div>
             <div>
               <label for="category" class="sr-only">{% translate "Category" %}</label>
-              <select id="category" name="category" class="w-full rounded-md border-line bg-white text-sm text-ink focus:border-brand-500 focus:ring-brand-500">
+              <select id="category" name="category" class="w-full rounded-lg border-line bg-white text-sm text-ink focus:border-brand-600 focus:ring-1 focus:ring-brand-600">
                 <option value="">{% translate "All categories" %}</option>
                 {% for value, label in categories %}
                   <option value="{{ value }}" {% if selected_category == value %}selected{% endif %}>{{ label }}</option>
@@ -61,11 +57,11 @@
     <section class="section-muted section pb-16 sm:py-16">
       <div class="container-page">
         <div class="flex flex-col gap-3 border-b border-line pb-5 sm:flex-row sm:items-center sm:justify-between">
-          <p class="text-sm font-medium text-ink/55">
+          <p class="text-sm font-medium text-slate-600">
             {% blocktranslate count counter=result_count %}{{ counter }} service found{% plural %}{{ counter }} services found{% endblocktranslate %}
           </p>
           {% if query or selected_category %}
-            <a href="{% url 'services:search' %}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition hover:text-brand-800">
+            <a href="{% url 'services:search' %}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition hover:text-brand-700">
               <svg class="h-3.5 w-3.5" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="m4 4 8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
               </svg>
@@ -75,7 +71,7 @@
         </div>
 
         {% if page_obj.object_list %}
-          <div class="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div class="mt-7 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {% for offering in page_obj.object_list %}
               {% include "components/service_card.html" with service=offering %}
             {% endfor %}
@@ -93,7 +89,7 @@
                   </a>
                 {% endif %}
               </div>
-              <p class="text-sm text-ink/50">{% blocktranslate with number=page_obj.number total=page_obj.paginator.num_pages %}Page {{ number }} of {{ total }}{% endblocktranslate %}</p>
+              <p class="text-sm text-slate-500">{% blocktranslate with number=page_obj.number total=page_obj.paginator.num_pages %}Page {{ number }} of {{ total }}{% endblocktranslate %}</p>
               <div class="w-28 text-right">
                 {% if page_obj.has_next %}
                   <a class="btn-secondary !px-4 !py-2.5" href="?q={{ query|urlencode }}{% if selected_category %}&amp;category={{ selected_category|urlencode }}{% endif %}&amp;page={{ page_obj.next_page_number }}">
@@ -107,26 +103,24 @@
             </nav>
           {% endif %}
         {% else %}
-          <div class="mt-8 rounded-lg border border-dashed border-brand-200 bg-white p-10 text-center sm:p-14">
-            <span class="icon-circle mx-auto">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <circle cx="10.5" cy="10.5" r="6" stroke="currentColor" stroke-width="1.7"/>
-                <path d="m15 15 4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <div class="mt-8 rounded-xl border border-line bg-white p-12 text-center shadow-card">
+            <span class="mx-auto grid h-14 w-14 place-items-center rounded-xl bg-brand-50 text-brand-600 ring-1 ring-brand-200/70" aria-hidden="true">
+              <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none">
+                <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/>
+                <path d="m16.5 16.5 4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
               </svg>
             </span>
-            <p class="mt-5 font-display text-2xl font-bold">{% translate "No services found" %}</p>
-            <p class="mx-auto mt-2 max-w-md text-sm leading-6 text-ink/55">
-              {% if query %}{% translate "Try a different search term or clear the filters." %}{% else %}{% translate "Services will appear here as facilities publish them." %}{% endif %}
+            <h2 class="mt-4 font-display text-xl font-semibold text-ink">{% translate "No services matched your search" %}</h2>
+            <p class="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-500">
+              {% translate "Try different keywords, clear the category filter, or check spelling. New facilities are added regularly." %}
             </p>
             {% if query or selected_category %}
-              <a href="{% url 'services:search' %}" class="btn-primary mt-6">{% translate "Clear search" %}</a>
+              <div class="mt-6">
+                <a href="{% url 'services:search' %}" class="btn-secondary">{% translate "Clear search" %}</a>
+              </div>
             {% endif %}
           </div>
         {% endif %}
-
-        <p class="mt-10 max-w-3xl text-xs leading-5 text-ink/40">
-          {% translate "Demo listings are fictional and are used to validate the Linee experience. Fees and services shown here are not real facility pricing." %}
-        </p>
       </div>
     </section>
   </main>

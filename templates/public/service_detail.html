@@ -8,33 +8,29 @@
 
   <main id="main">
     <section class="page-hero">
-      <div class="hero-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
-      <div class="pointer-events-none absolute -right-16 top-0 h-64 w-64 text-white/10 dotted-grid" aria-hidden="true"></div>
-      <div class="pointer-events-none absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-brand-500/25 blur-[110px]" aria-hidden="true"></div>
-
-      <div class="container-page relative py-12 sm:py-16">
-        <nav aria-label="{% translate 'Breadcrumb' %}" class="flex flex-wrap items-center gap-2 text-xs font-medium text-white/50">
+      <div class="container-page py-12 sm:py-16">
+        <nav aria-label="{% translate 'Breadcrumb' %}" class="flex flex-wrap items-center gap-2 text-xs font-medium text-white/60">
           <a href="{% url 'public:home' %}" class="transition hover:text-white">{% translate "Home" %}</a>
-          <span aria-hidden="true">/</span>
+          <span aria-hidden="true" class="text-white/40">/</span>
           <a href="{% url 'services:search' %}" class="transition hover:text-white">{% translate "Find a service" %}</a>
-          <span aria-hidden="true">/</span>
-          <span class="text-white/80">{{ service.display_name }}</span>
+          <span aria-hidden="true" class="text-white/40">/</span>
+          <span class="text-white">{{ service.display_name }}</span>
         </nav>
 
-        <div class="mt-7 flex flex-wrap items-center gap-2">
-          <span class="inline-flex items-center rounded-full bg-white/10 px-2.5 py-1 text-[11px] font-semibold text-white">{{ service.service.get_category_display }}</span>
-          <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-500 px-2.5 py-1 text-[11px] font-semibold text-navy">
-            <span class="h-1.5 w-1.5 rounded-full bg-navy" aria-hidden="true"></span>
+        <div class="mt-6 flex flex-wrap items-center gap-2">
+          <span class="inline-flex items-center rounded-full bg-white/10 px-2.5 py-0.5 text-[11px] font-semibold text-white">{{ service.service.get_category_display }}</span>
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-500/20 px-2.5 py-0.5 text-[11px] font-semibold text-blue-200 ring-1 ring-inset ring-brand-400/30">
+            <span class="h-1.5 w-1.5 rounded-full bg-blue-300" aria-hidden="true"></span>
             {% translate "Demo listing" %}
           </span>
         </div>
 
         <h1 class="mt-4 max-w-3xl font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">{{ service.display_name }}</h1>
-        <p class="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-white/60">
+        <p class="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-white/70">
           <span>{{ service.organization.name }}</span>
-          <span class="text-white/25" aria-hidden="true">•</span>
+          <span class="text-white/30" aria-hidden="true">•</span>
           <span>{{ service.branch.name }}</span>
-          <span class="text-white/25" aria-hidden="true">•</span>
+          <span class="text-white/30" aria-hidden="true">•</span>
           <span>{{ service.branch.city }}</span>
         </p>
       </div>
@@ -42,14 +38,14 @@
 
     <section class="section-muted section py-14 sm:py-16">
       <div class="container-page grid gap-8 lg:grid-cols-[1fr_360px] lg:items-start">
-        <article class="rounded-lg border border-line bg-white p-6 shadow-card sm:p-8">
+        <article class="rounded-xl border border-line bg-white p-6 shadow-card sm:p-8">
           <p class="eyebrow">{% translate "About this service" %}</p>
-          <p class="mt-4 max-w-2xl text-base leading-7 text-ink/65">{{ service.display_description }}</p>
+          <p class="mt-4 max-w-2xl text-base leading-7 text-slate-600">{{ service.display_description }}</p>
 
-          <dl class="mt-8 grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-3">
+          <dl class="mt-8 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-3">
             <div class="bg-white p-5">
-              <dt class="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-ink/40">
-                <svg class="h-3.5 w-3.5 text-brand-500" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <dt class="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400">
+                <svg class="h-3.5 w-3.5 text-brand-600" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                   <path d="M10 17.5s5.5-4.6 5.5-9a5.5 5.5 0 1 0-11 0c0 4.4 5.5 9 5.5 9Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
                   <circle cx="10" cy="8.3" r="1.9" stroke="currentColor" stroke-width="1.5"/>
                 </svg>
@@ -58,8 +54,8 @@
               <dd class="mt-2 text-sm font-semibold leading-6 text-ink">{{ service.branch.address|default:service.branch.city }}</dd>
             </div>
             <div class="bg-white p-5">
-              <dt class="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-ink/40">
-                <svg class="h-3.5 w-3.5 text-brand-500" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <dt class="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400">
+                <svg class="h-3.5 w-3.5 text-brand-600" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                   <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/>
                   <path d="M10 6v4.2l2.6 1.7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -68,8 +64,8 @@
               <dd class="mt-2 text-sm font-semibold text-ink">{% blocktranslate with minutes=service.default_duration_minutes %}{{ minutes }} minutes{% endblocktranslate %}</dd>
             </div>
             <div class="bg-white p-5">
-              <dt class="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-ink/40">
-                <svg class="h-3.5 w-3.5 text-brand-500" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <dt class="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400">
+                <svg class="h-3.5 w-3.5 text-brand-600" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                   <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/>
                   <path d="M3 10h14M10 3c1.8 2 2.7 4.3 2.7 7S11.8 15 10 17c-1.8-2-2.7-4.3-2.7-7S8.2 5 10 3Z" stroke="currentColor" stroke-width="1.3"/>
                 </svg>
@@ -79,12 +75,12 @@
             </div>
           </dl>
 
-          <div class="mt-8 rounded-lg border border-brand-100 bg-mist p-6">
+          <div class="mt-8 rounded-xl border border-brand-200/70 bg-brand-50/50 p-6">
             <h2 class="font-display text-xl font-bold text-ink">{% translate "Before you visit" %}</h2>
-            <p class="mt-2 max-w-2xl text-sm leading-6 text-ink/55">
+            <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
               {% translate "This facility’s approved document checklist will appear here once it is published. Linee never asks you to upload ID photos, medical records or test results." %}
             </p>
-            <ul class="mt-5 space-y-3 text-sm text-ink/65">
+            <ul class="mt-5 space-y-3 text-sm text-slate-700">
               <li class="flex gap-3">
                 <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand-600 text-white">
                   <svg width="10" height="10" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -113,17 +109,17 @@
           </div>
         </article>
 
-        <aside class="lg:sticky lg:top-28">
-          <div class="overflow-hidden rounded-lg border border-line bg-white shadow-card">
-            <div class="h-1.5 bg-brand-500" aria-hidden="true"></div>
+        <aside class="lg:sticky lg:top-28 space-y-5">
+          <div class="overflow-hidden rounded-xl border border-line bg-white shadow-card">
+            <div class="h-1 bg-brand-600" aria-hidden="true"></div>
             <div class="p-6">
-              <p class="text-[10px] font-semibold uppercase tracking-[0.16em] text-ink/40">{% translate "Official fee" %}</p>
+              <p class="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">{% translate "Official fee" %}</p>
               <p class="mt-2 font-display text-4xl font-bold tracking-tight text-navy">
                 {% if current_fee %}{{ current_fee.amount_xaf|xaf }}{% else %}{% translate "No fee published" %}{% endif %}
               </p>
-              <p class="mt-3 text-xs leading-5 text-ink/45">{% translate "The official fee set by the organization. Payment, where required, is handled by a clearly labelled simulated provider in this build." %}</p>
-              <div class="mt-5 flex gap-3 rounded-md bg-brand-50 p-4 text-xs leading-5 text-brand-800 ring-1 ring-inset ring-brand-200">
-                <svg class="mt-0.5 h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <p class="mt-3 text-xs leading-5 text-slate-500">{% translate "The official fee set by the organization. Payment, where required, is handled by a clearly labelled simulated provider in this build." %}</p>
+              <div class="mt-5 flex gap-3 rounded-lg bg-brand-50 p-4 text-xs leading-5 text-brand-800 ring-1 ring-inset ring-brand-200/70">
+                <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                   <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/>
                   <path d="M10 9v4M10 6.5h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
                 </svg>
@@ -133,13 +129,13 @@
             </div>
           </div>
 
-          <div class="mt-4 rounded-lg bg-navy p-5 text-sm leading-6 text-white/70">
+          <div class="rounded-xl bg-navy p-5 text-sm leading-6 text-white/80">
             <p class="flex items-center gap-2 font-semibold text-white">
-              <span class="h-1.5 w-1.5 rounded-full bg-brand-500" aria-hidden="true"></span>
+              <span class="h-1.5 w-1.5 rounded-full bg-brand-400" aria-hidden="true"></span>
               {% translate "Need help?" %}
             </p>
             <p class="mt-2">{% translate "Questions about this service or your visit? Write to the Linee team." %}</p>
-            <a href="mailto:hello@linee.cm" class="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-brand-200 transition hover:text-white">
+            <a href="mailto:hello@linee.cm" class="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-blue-200 transition hover:text-white">
               hello@linee.cm
               <svg class="h-3 w-3" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>

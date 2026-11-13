@@ -7,19 +7,19 @@
 {% block aside_title %}{% translate "Choose how you will use Linee." %}{% endblock %}
 {% block aside_text %}{% translate "Choose a personal account to manage your visits, or an organization account to manage queues for an institution." %}{% endblock %}
 {% block aside_points %}
-  <li class="flex gap-3"><span class="check-dot" aria-hidden="true"></span>{% translate "Personal accounts hold tickets and appointments." %}</li>
-  <li class="flex gap-3"><span class="check-dot" aria-hidden="true"></span>{% translate "Organization accounts manage branches and services." %}</li>
-  <li class="flex gap-3"><span class="check-dot" aria-hidden="true"></span>{% translate "Organizations are reviewed before they appear publicly." %}</li>
+  <li class="flex gap-3"><span class="list-dot" aria-hidden="true"></span>{% translate "Personal accounts hold tickets and appointments." %}</li>
+  <li class="flex gap-3"><span class="list-dot" aria-hidden="true"></span>{% translate "Organization accounts manage branches and services." %}</li>
+  <li class="flex gap-3"><span class="list-dot" aria-hidden="true"></span>{% translate "Organizations are reviewed before they appear publicly." %}</li>
 {% endblock %}
 
 {% block auth_content %}
   <p class="eyebrow">{% translate "Get started" %}</p>
   <h1 class="mt-3 font-display text-3xl font-semibold tracking-tight text-navy">{% translate "Create an account" %}</h1>
-  <p class="mt-2 text-sm leading-6 text-ink/60">
+  <p class="mt-2 text-sm leading-6 text-slate-500">
     {% translate "Choose the account that matches how you will use Linee." %}
   </p>
 
-  <div class="mt-8 space-y-3">
+  <div class="mt-8 space-y-3.5">
     <a href="{% url 'accounts:register_person' %}" class="choice-card group">
       <span class="choice-icon" aria-hidden="true">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -28,10 +28,10 @@
         </svg>
       </span>
       <span class="min-w-0 flex-1">
-        <span class="block text-sm font-semibold text-ink">{% translate "Personal account" %}</span>
-        <span class="mt-1 block text-sm leading-6 text-ink/60">{% translate "Book appointments, join queues and keep your tickets together." %}</span>
+        <span class="block text-sm font-semibold text-ink group-hover:text-brand-600 transition-colors">{% translate "Personal account" %}</span>
+        <span class="mt-1 block text-sm leading-6 text-slate-500">{% translate "Book appointments, join queues and keep your tickets together." %}</span>
       </span>
-      <span class="text-brand-600 transition group-hover:translate-x-0.5" aria-hidden="true">→</span>
+      <span class="text-brand-600 transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
     </a>
 
     <a href="{% url 'accounts:register_organization' %}" class="choice-card group">
@@ -42,15 +42,15 @@
         </svg>
       </span>
       <span class="min-w-0 flex-1">
-        <span class="block text-sm font-semibold text-ink">{% translate "Organization or institution" %}</span>
-        <span class="mt-1 block text-sm leading-6 text-ink/60">{% translate "Register a hospital, office, bank or other service organization." %}</span>
+        <span class="block text-sm font-semibold text-ink group-hover:text-brand-600 transition-colors">{% translate "Organization or institution" %}</span>
+        <span class="mt-1 block text-sm leading-6 text-slate-500">{% translate "Register a hospital, office, bank or other service organization." %}</span>
       </span>
-      <span class="text-brand-600 transition group-hover:translate-x-0.5" aria-hidden="true">→</span>
+      <span class="text-brand-600 transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
     </a>
   </div>
 
-  <p class="mt-8 text-sm text-ink/60">
+  <p class="mt-8 text-sm text-slate-500">
     {% translate "Already have an account?" %}
-    <a href="{% url 'accounts:login' %}" class="font-medium text-brand-700 hover:text-brand-800">{% translate "Sign in" %}</a>
+    <a href="{% url 'accounts:login' %}" class="font-semibold text-brand-600 hover:text-brand-700">{% translate "Sign in" %}</a>
   </p>
 {% endblock %}

@@ -78,15 +78,11 @@ class TestRegistration:
         assert not User.objects.exists()
 
     def test_organization_signup_creates_pending_tenant_and_admin(self, client):
-        response = client.post(
-            reverse("accounts:register_organization"), organization_payload()
-        )
+        response = client.post(reverse("accounts:register_organization"), organization_payload())
 
         organization = Organization.objects.get(name="Bonanjo Health Centre")
         assert response.status_code == 302
-        assert response["Location"] == reverse(
-            "organizations:dashboard", args=[organization.slug]
-        )
+        assert response["Location"] == reverse("organizations:dashboard", args=[organization.slug])
         assert organization.status == Organization.Status.PENDING
         assert organization.organization_type == Organization.Type.CLINIC
         membership = organization.memberships.get()
@@ -194,9 +190,7 @@ class TestTenantIsolation:
         first_user, first, _ = tenants
         client.force_login(first_user)
 
-        response = client.get(
-            reverse("organizations:dashboard", args=[first.slug])
-        )
+        response = client.get(reverse("organizations:dashboard", args=[first.slug]))
 
         assert response.status_code == 200
 
@@ -204,9 +198,7 @@ class TestTenantIsolation:
         first_user, _, second = tenants
         client.force_login(first_user)
 
-        response = client.get(
-            reverse("organizations:dashboard", args=[second.slug])
-        )
+        response = client.get(reverse("organizations:dashboard", args=[second.slug]))
 
         assert response.status_code == 404
 
@@ -219,6 +211,4 @@ class TestTenantIsolation:
         )
 
         assert response.status_code == 302
-        assert response["Location"] == reverse(
-            "organizations:dashboard", args=[first.slug]
-        )
+        assert response["Location"] == reverse("organizations:dashboard", args=[first.slug])

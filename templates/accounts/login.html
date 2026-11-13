@@ -6,7 +6,7 @@
 {% block auth_content %}
   <p class="eyebrow">{% translate "Welcome back" %}</p>
   <h1 class="mt-3 font-display text-3xl font-semibold tracking-tight text-navy">{% translate "Sign in" %}</h1>
-  <p class="mt-2 text-sm leading-6 text-ink/60">
+  <p class="mt-2 text-sm leading-6 text-slate-500">
     {% translate "Use the phone number or email address on your account." %}
   </p>
 
@@ -21,8 +21,8 @@
     <button type="submit" class="btn-primary w-full">{% translate "Sign in" %}</button>
   </form>
 
-  <p class="mt-6 text-sm text-ink/60">
+  <p class="mt-6 text-sm text-slate-500">
     {% translate "New to Linee?" %}
-    <a href="{% url 'accounts:register' %}" class="font-medium text-brand-700 hover:text-brand-800">{% translate "Create an account" %}</a>
+    <a href="{% url 'accounts:register' %}" class="font-semibold text-brand-600 hover:text-brand-700">{% translate "Create an account" %}</a>
   </p>
 {% endblock %}

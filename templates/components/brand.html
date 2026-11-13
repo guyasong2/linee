@@ -1,11 +1,9 @@
 {% load i18n static %}
-<a href="{% url 'public:home' %}" class="group inline-flex items-center" aria-label="{{ SITE_NAME }} — {% translate 'home' %}">
-  <img
-    src="{% static 'img/linee-logo.png' %}"
-    alt="Linee"
-    width="120"
-    height="36"
-    class="h-8 w-auto sm:h-9"
-    fetchpriority="high"
-  >
+<a href="{% url 'public:home' %}" class="group inline-flex items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-brand-400 rounded-lg" aria-label="{{ SITE_NAME }} — {% translate 'home' %}">
+  <span class="grid h-8 w-8 place-items-center rounded-lg {% if light %}bg-white/10 text-white ring-1 ring-white/20{% else %}bg-brand-600 text-white shadow-sm ring-1 ring-brand-700/20{% endif %} transition-transform duration-150 group-hover:scale-105">
+    <svg class="h-4.5 w-4.5" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4 6.5h16M4 12h11M4 17.5h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+    </svg>
+  </span>
+  <span class="font-display text-xl font-bold tracking-tight {% if light %}text-white{% else %}text-ink{% endif %}">Lin<span class="{% if light %}text-brand-300{% else %}text-brand-600{% endif %}">ee</span></span>
 </a>

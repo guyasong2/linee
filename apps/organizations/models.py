@@ -30,9 +30,7 @@ class Organization(TimeStampedModel, PublicIdModel):
     name = models.CharField(max_length=180)
     slug = models.SlugField(max_length=80, unique=True)
     legal_name = models.CharField(max_length=220, blank=True)
-    organization_type = models.CharField(
-        max_length=30, choices=Type.choices, default=Type.OTHER
-    )
+    organization_type = models.CharField(max_length=30, choices=Type.choices, default=Type.OTHER)
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDING)
     timezone = models.CharField(max_length=64, default="Africa/Douala")
     default_language = models.CharField(
@@ -56,11 +54,7 @@ class Organization(TimeStampedModel, PublicIdModel):
         base = slugify(self.name)[:70].strip("-") or "organization"
         candidate = base
         suffix = 2
-        while (
-            Organization.objects.filter(slug=candidate)
-            .exclude(pk=self.pk)
-            .exists()
-        ):
+        while Organization.objects.filter(slug=candidate).exclude(pk=self.pk).exists():
             candidate = f"{base}-{suffix}"
             suffix += 1
         return candidate

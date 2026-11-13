@@ -35,16 +35,12 @@ class PersonSignUpForm(forms.Form):
         max_length=30,
         required=False,
         label=_("Phone number"),
-        widget=forms.TextInput(
-            attrs=_text_attrs("tel", placeholder=_("+237 6 00 00 00 00"))
-        ),
+        widget=forms.TextInput(attrs=_text_attrs("tel", placeholder=_("+237 6 00 00 00 00"))),
     )
     email = forms.EmailField(
         required=False,
         label=_("Email address"),
-        widget=forms.EmailInput(
-            attrs=_text_attrs("email", placeholder=_("you@example.com"))
-        ),
+        widget=forms.EmailInput(attrs=_text_attrs("email", placeholder=_("you@example.com"))),
     )
     preferred_language = forms.ChoiceField(
         label=_("Preferred language"),
@@ -92,13 +88,9 @@ class PersonSignUpForm(forms.Form):
         email = cleaned.get("email")
 
         if not phone and not email:
-            raise forms.ValidationError(
-                _("Enter a phone number or an email address.")
-            )
+            raise forms.ValidationError(_("Enter a phone number or an email address."))
         if phone and User.objects.filter(phone=phone).exists():
-            self.add_error(
-                "phone", _("An account with this phone number already exists.")
-            )
+            self.add_error("phone", _("An account with this phone number already exists."))
         if email and User.objects.filter(email=email).exists():
             self.add_error("email", _("An account with this email address already exists."))
 
@@ -169,16 +161,12 @@ class OrganizationSignUpForm(forms.Form):
         max_length=30,
         required=False,
         label=_("Your phone number"),
-        widget=forms.TextInput(
-            attrs=_text_attrs("tel", placeholder=_("+237 6 00 00 00 00"))
-        ),
+        widget=forms.TextInput(attrs=_text_attrs("tel", placeholder=_("+237 6 00 00 00 00"))),
     )
     admin_email = forms.EmailField(
         required=False,
         label=_("Your email address"),
-        widget=forms.EmailInput(
-            attrs=_text_attrs("email", placeholder=_("you@example.com"))
-        ),
+        widget=forms.EmailInput(attrs=_text_attrs("email", placeholder=_("you@example.com"))),
     )
     preferred_language = forms.ChoiceField(
         label=_("Preferred language"),
@@ -242,7 +230,9 @@ class OrganizationSignUpForm(forms.Form):
 
         if not org_phone and not org_email:
             raise forms.ValidationError(
-                _("Add at least one contact for the organization: a phone number or an email address.")
+                _(
+                    "Add at least one contact for the organization: a phone number or an email address."
+                )
             )
         if not admin_phone and not admin_email:
             raise forms.ValidationError(
@@ -315,8 +305,6 @@ class LineeAuthenticationForm(AuthenticationForm):
     )
 
     error_messages = {
-        "invalid_login": _(
-            "The phone number or email and password do not match an account."
-        ),
+        "invalid_login": _("The phone number or email and password do not match an account."),
         "inactive": _("This account is inactive."),
     }

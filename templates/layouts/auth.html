@@ -3,14 +3,16 @@
 
 {% block body %}
 <div class="min-h-screen bg-white">
-  <header class="border-b border-line">
+  <header class="border-b border-line bg-white">
     <div class="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
       {% include "components/brand.html" %}
       <div class="flex items-center gap-3">
-        <a href="{{ language_switch_url }}" class="rounded-md border border-line px-2.5 py-1.5 text-xs font-medium text-ink/70 transition hover:border-brand-300 hover:text-brand-700" hreflang="{% if current_language == 'en' %}fr{% else %}en{% endif %}">
+        <a href="{{ language_switch_url }}"
+          class="rounded-lg border border-line bg-white px-2.5 py-1.5 text-xs font-medium text-slate-700 transition hover:border-brand-300 hover:bg-brand-50/50 hover:text-brand-700"
+          hreflang="{% if current_language == 'en' %}fr{% else %}en{% endif %}">
           {{ language_switch_label }}
         </a>
-        <a href="{% url 'public:home' %}" class="text-sm font-medium text-ink/60 transition hover:text-brand-700">
+        <a href="{% url 'public:home' %}" class="text-sm font-medium text-slate-600 transition hover:text-brand-600">
           {% translate "Back to Linee" %}
         </a>
       </div>
@@ -24,18 +26,22 @@
         <h2 class="mt-4 max-w-sm font-display text-3xl font-semibold leading-tight tracking-tight text-navy">
           {% block aside_title %}{% translate "Manage your visits from one account." %}{% endblock %}
         </h2>
-        <p class="mt-4 max-w-sm text-sm leading-6 text-ink/70">
-          {% block aside_text %}{% translate "Sign in to see your tickets, appointments and organization workspace." %}{% endblock %}
+        <p class="mt-4 max-w-sm text-sm leading-6 text-slate-600">
+          {% block aside_text %}{% translate "Sign in to see your tickets, appointments and organization workspace."
+          %}{% endblock %}
         </p>
-        <ul class="mt-8 space-y-3 text-sm text-ink/70">
+        <ul class="mt-8 space-y-3.5 text-sm text-slate-600">
           {% block aside_points %}
-            <li class="flex gap-3"><span class="list-dot" aria-hidden="true"></span>{% translate "Book an appointment or join today's queue." %}</li>
-            <li class="flex gap-3"><span class="list-dot" aria-hidden="true"></span>{% translate "Review the documents your visit requires." %}</li>
-            <li class="flex gap-3"><span class="list-dot" aria-hidden="true"></span>{% translate "Keep every ticket in one place." %}</li>
+          <li class="flex gap-3"><span class="list-dot" aria-hidden="true"></span>{% translate "Book an appointment or
+            join today's queue." %}</li>
+          <li class="flex gap-3"><span class="list-dot" aria-hidden="true"></span>{% translate "Review the documents
+            your visit requires." %}</li>
+          <li class="flex gap-3"><span class="list-dot" aria-hidden="true"></span>{% translate "Keep every ticket in one
+            place." %}</li>
           {% endblock %}
         </ul>
       </div>
-      <p class="text-xs leading-5 text-ink/45">
+      <p class="text-xs leading-5 text-slate-400">
         {% translate "Linee coordinates access to services provided by participating organizations." %}
       </p>
     </aside>

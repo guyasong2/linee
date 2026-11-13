@@ -27,9 +27,7 @@ def active_branch_services() -> QuerySet[BranchService]:
     )
 
 
-def search_branch_services(
-    query: str = "", category: str = ""
-) -> QuerySet[BranchService]:
+def search_branch_services(query: str = "", category: str = "") -> QuerySet[BranchService]:
     queryset = active_branch_services()
     if query:
         queryset = queryset.filter(

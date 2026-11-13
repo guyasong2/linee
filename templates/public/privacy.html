@@ -8,25 +8,21 @@
 
   <main id="main">
     <section class="page-hero">
-      <div class="hero-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
-      <div class="pointer-events-none absolute -right-20 -top-10 h-64 w-64 text-white/10 dotted-grid" aria-hidden="true"></div>
-      <div class="pointer-events-none absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-brand-500/25 blur-[110px]" aria-hidden="true"></div>
-
-      <div class="container-page relative py-12 sm:py-16">
-        <nav aria-label="{% translate 'Breadcrumb' %}" class="flex items-center gap-2 text-xs font-medium text-white/50">
+      <div class="container-page py-12 sm:py-16">
+        <nav aria-label="{% translate 'Breadcrumb' %}" class="flex items-center gap-2 text-xs font-medium text-white/60">
           <a href="{% url 'public:home' %}" class="transition hover:text-white">{% translate "Home" %}</a>
-          <span aria-hidden="true">/</span>
-          <span class="text-white/80">{% translate "Privacy notice" %}</span>
+          <span aria-hidden="true" class="text-white/40">/</span>
+          <span class="text-white">{% translate "Privacy notice" %}</span>
         </nav>
 
-        <div class="mt-7 max-w-3xl">
+        <div class="mt-6 max-w-3xl">
           <p class="eyebrow-light">{% translate "Privacy and trust" %}</p>
-          <h1 class="mt-4 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">{% translate "Privacy notice" %}</h1>
-          <p class="mt-4 max-w-2xl text-base leading-7 text-white/65">
+          <h1 class="mt-3 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">{% translate "Privacy notice" %}</h1>
+          <p class="mt-3 max-w-2xl text-base leading-7 text-white/75">
             {% translate "Linee is built to collect less, store less and reveal less. This page explains exactly what a ticket needs — and what it never asks for." %}
           </p>
-          <p class="mt-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold text-white/70">
-            <span class="h-1.5 w-1.5 rounded-full bg-brand-500" aria-hidden="true"></span>
+          <p class="mt-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold text-white/90">
+            <span class="h-1.5 w-1.5 rounded-full bg-brand-400" aria-hidden="true"></span>
             {% translate "Demonstration notice. A full legal notice will be published before production deployment." %}
           </p>
         </div>
@@ -35,8 +31,8 @@
 
     <section class="section-muted section py-14 sm:py-16">
       <div class="container-page">
-        <div class="mx-auto max-w-3xl rounded-lg border border-line bg-white p-6 shadow-card sm:p-10">
-          <div class="prose prose-sm max-w-none prose-headings:font-display prose-headings:font-bold prose-headings:text-ink prose-h2:mt-10 prose-h2:text-2xl prose-p:text-ink/65 prose-li:text-ink/65 prose-li:marker:text-brand-500 prose-a:font-semibold prose-a:text-brand-600 hover:prose-a:text-brand-800">
+        <div class="mx-auto max-w-3xl rounded-xl border border-line bg-white p-6 shadow-card sm:p-10">
+          <div class="prose prose-sm max-w-none prose-headings:font-display prose-headings:font-bold prose-headings:text-ink prose-h2:mt-10 prose-h2:text-2xl prose-p:text-slate-600 prose-li:text-slate-600 prose-li:marker:text-brand-600 prose-a:font-semibold prose-a:text-brand-600 hover:prose-a:text-brand-700">
             <h2 id="what-linee-is" class="first:mt-0">{% translate "What Linee is" %}</h2>
             <p>{% translate "Linee helps people discover essential services, prepare the required documents, pay published fees and track their place in a queue. The demonstration uses fictional facilities and simulated payments and SMS." %}</p>
 
@@ -44,8 +40,8 @@
             <p>{% translate "We aim to collect only what is needed to issue and manage a ticket: an identifier, a phone number where available, the selected service, appointment or queue details, checklist acknowledgements, payment status and service outcomes." %}</p>
 
             <h2 id="what-linee-does-not-collect">{% translate "What Linee does not collect" %}</h2>
-            <div class="not-prose mt-4 rounded-lg border border-brand-100 bg-mist p-5">
-              <ul class="space-y-3 text-sm text-ink/65">
+            <div class="not-prose mt-4 rounded-xl border border-brand-200/70 bg-brand-50/50 p-6">
+              <ul class="space-y-3.5 text-sm text-slate-700">
                 <li class="flex gap-3">
                   <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand-600 text-white">
                     <svg width="10" height="10" viewBox="0 0 16 16" fill="none" aria-hidden="true">

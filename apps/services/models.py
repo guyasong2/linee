@@ -69,15 +69,9 @@ class BranchService(TimeStampedModel, PublicIdModel):
     organization = models.ForeignKey(
         Organization, on_delete=models.PROTECT, related_name="branch_services"
     )
-    branch = models.ForeignKey(
-        Branch, on_delete=models.CASCADE, related_name="branch_services"
-    )
-    service = models.ForeignKey(
-        Service, on_delete=models.PROTECT, related_name="branch_services"
-    )
-    description_en = models.TextField(
-        blank=True, help_text="Optional branch-specific description."
-    )
+    branch = models.ForeignKey(Branch, on_delete=models.CASCADE, related_name="branch_services")
+    service = models.ForeignKey(Service, on_delete=models.PROTECT, related_name="branch_services")
+    description_en = models.TextField(blank=True, help_text="Optional branch-specific description.")
     description_fr = models.TextField(blank=True)
     default_duration_minutes = models.PositiveIntegerField(default=15)
     is_active = models.BooleanField(default=True)
@@ -143,13 +137,9 @@ class ServiceFee(TimeStampedModel):
     organization = models.ForeignKey(
         Organization, on_delete=models.PROTECT, related_name="service_fees"
     )
-    branch_service = models.ForeignKey(
-        BranchService, on_delete=models.CASCADE, related_name="fees"
-    )
+    branch_service = models.ForeignKey(BranchService, on_delete=models.CASCADE, related_name="fees")
     amount_xaf = models.PositiveIntegerField(default=0)
-    currency = models.CharField(
-        max_length=3, choices=Currency.choices, default=Currency.XAF
-    )
+    currency = models.CharField(max_length=3, choices=Currency.choices, default=Currency.XAF)
     effective_from = models.DateField(default=timezone.localdate)
     effective_to = models.DateField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
@@ -190,9 +180,7 @@ class ServiceFee(TimeStampedModel):
                 {"organization": "The fee must belong to the same organization as the service."}
             )
         if self.effective_to and self.effective_to < self.effective_from:
-            raise ValidationError(
-                {"effective_to": "The end date cannot be before the start date."}
-            )
+            raise ValidationError({"effective_to": "The end date cannot be before the start date."})
 
     def save(self, *args, **kwargs):
         self.full_clean()

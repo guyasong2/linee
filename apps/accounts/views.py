@@ -103,9 +103,7 @@ def register_organization(request: HttpRequest) -> HttpResponse:
         )
         messages.success(
             request,
-            _(
-                "Organization registered. Complete the setup steps before it can appear publicly."
-            ),
+            _("Organization registered. Complete the setup steps before it can appear publicly."),
         )
         return redirect(
             _safe_next(

@@ -102,18 +102,27 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": env("DB_NAME", "linee"),
-        "USER": env("DB_USER", "linee"),
-        "PASSWORD": env("DB_PASSWORD", "linee_dev_password"),
-        "HOST": env("DB_HOST", "127.0.0.1"),
-        "PORT": env("DB_PORT", "5432"),
-        "CONN_MAX_AGE": env_int("DB_CONN_MAX_AGE", 60),
-        "OPTIONS": {"connect_timeout": 5},
+DB_ENGINE = env("DB_ENGINE", "django.db.backends.postgresql")
+if DB_ENGINE == "django.db.backends.sqlite3":
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / env("DB_NAME", "db.sqlite3"),
+        }
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": DB_ENGINE,
+            "NAME": env("DB_NAME", "linee"),
+            "USER": env("DB_USER", "linee"),
+            "PASSWORD": env("DB_PASSWORD", "linee_dev_password"),
+            "HOST": env("DB_HOST", "127.0.0.1"),
+            "PORT": env("DB_PORT", "5432"),
+            "CONN_MAX_AGE": env_int("DB_CONN_MAX_AGE", 60),
+            "OPTIONS": {"connect_timeout": 5},
+        }
+    }
 
 CACHES = {
     "default": {
@@ -214,9 +223,7 @@ SITE_TAGLINE = "Shorter waits. No separate payment queue. No wasted trips."
 
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", "Linee <no-reply@linee.cm>")
 SERVER_EMAIL = env("SERVER_EMAIL", "Linee <errors@linee.cm>")
-EMAIL_BACKEND = env(
-    "EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend"
-)
+EMAIL_BACKEND = env("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
 
 LOGIN_URL = "accounts:login"
 LOGIN_REDIRECT_URL = "accounts:account"

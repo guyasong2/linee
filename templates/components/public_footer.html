@@ -2,18 +2,11 @@
 <footer class="bg-navy text-white">
   <div class="container-page grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
     <div>
-      <img
-        src="{% static 'img/linee-logo-light.png' %}"
-        alt="Linee"
-        width="104"
-        height="31"
-        class="h-7 w-auto"
-        loading="lazy"
-      >
-      <p class="mt-5 max-w-xs text-sm leading-6 text-white/60">
+      {% include "components/brand.html" with light=True %}
+      <p class="mt-5 max-w-xs text-sm leading-6 text-white/70">
         {% translate "Queue management, appointment booking and document readiness for essential services in Cameroon." %}
       </p>
-      <p class="mt-4 text-xs text-white/45">Douala, Cameroon · English · Français</p>
+      <p class="mt-4 text-xs text-white/40">Douala, Cameroon · English · Français</p>
     </div>
 
     <div>
@@ -50,10 +43,14 @@
       </ul>
     </div>
   </div>
+
   <div class="border-t border-white/10">
-    <div class="container-page flex flex-col gap-2 py-5 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
-      <p>© {% now "Y" %} Linee. {% translate "Demonstration product." %}</p>
-      <p>{% translate "English and French. XAF. Africa/Douala." %}</p>
+    <div class="container-page flex flex-col items-center justify-between gap-3 py-6 text-xs text-white/45 sm:flex-row">
+      <p>© 2026 Linee. {% translate "All rights reserved." %}</p>
+      <div class="flex items-center gap-6">
+        <a class="footer-link" href="{% url 'public:privacy' %}">{% translate "Privacy notice" %}</a>
+        <a class="footer-link" href="{% url 'services:search' %}">{% translate "Service directory" %}</a>
+      </div>
     </div>
   </div>
 </footer>

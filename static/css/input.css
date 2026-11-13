@@ -44,11 +44,11 @@
   }
 
   ::selection {
-    @apply bg-brand-100 text-navy;
+    @apply bg-brand-100 text-brand-900;
   }
 
   :focus-visible {
-    @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-white;
+    @apply outline-none ring-2 ring-brand-600 ring-offset-2 ring-offset-white;
   }
 
   h1,
@@ -68,63 +68,63 @@
   }
 
   .skip-link {
-    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-navy focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-white;
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-brand-600 focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-white shadow-md;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-md bg-brand-600 px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700 focus-visible:ring-brand-600 disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-brand-700 hover:shadow focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
   }
 
   .btn-accent {
-    @apply inline-flex items-center justify-center gap-2 rounded-md bg-navy px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-800 focus-visible:ring-white focus-visible:ring-offset-navy disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-navy px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-brand-900 hover:shadow focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-md border border-line bg-white px-6 py-3.5 text-sm font-semibold text-ink transition hover:border-brand-400 hover:text-brand-700 focus-visible:ring-brand-600 disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-line bg-white px-5 py-3 text-sm font-semibold text-ink shadow-subtle transition-all hover:border-brand-300 hover:bg-brand-50/50 hover:text-brand-700 focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
   }
 
   .btn-ghost-light {
-    @apply inline-flex items-center justify-center gap-2 rounded-md border border-white/35 bg-transparent px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/60 hover:bg-white/10 focus-visible:ring-white disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-white/35 bg-transparent px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-white hover:text-navy focus-visible:ring-2 focus-visible:ring-white disabled:cursor-not-allowed disabled:opacity-50;
   }
 
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.18em] text-brand-600;
+    @apply text-xs font-semibold uppercase tracking-[0.16em] text-brand-600;
   }
 
   .eyebrow-light {
-    @apply text-xs font-semibold uppercase tracking-[0.18em] text-brand-200;
+    @apply text-xs font-semibold uppercase tracking-[0.16em] text-brand-200;
   }
 
   .nav-link {
-    @apply text-sm font-medium text-ink/65 transition hover:text-brand-700;
+    @apply text-sm font-medium text-slate-600 transition-colors hover:text-brand-600;
   }
 
   .mobile-link {
-    @apply block rounded-md px-3 py-3 text-sm font-medium text-ink/75 transition hover:bg-mist hover:text-brand-700;
+    @apply block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:bg-brand-50 hover:text-brand-700;
   }
 
   .footer-link {
-    @apply text-white/60 transition hover:text-white;
+    @apply text-white/70 transition-colors hover:text-white;
   }
 
   .card {
-    @apply rounded-lg border border-line bg-white;
+    @apply rounded-xl border border-line bg-white shadow-card transition-colors;
   }
 
   .badge {
-    @apply inline-flex items-center rounded-full bg-brand-50 px-2.5 py-1 text-[11px] font-semibold text-brand-800 ring-1 ring-inset ring-brand-200;
+    @apply inline-flex items-center rounded-full bg-brand-50 px-2.5 py-0.5 text-[11px] font-semibold text-brand-700 ring-1 ring-inset ring-brand-200/70;
   }
 
   .icon-circle {
-    @apply grid h-12 w-12 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-100;
+    @apply grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600 ring-1 ring-inset ring-brand-200/70;
   }
 
   .icon-circle-sm {
-    @apply grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-100;
+    @apply grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-brand-50 text-brand-600 ring-1 ring-inset ring-brand-200/70;
   }
 
   .link-arrow {
-    @apply inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition hover:text-brand-800;
+    @apply inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition-colors hover:text-brand-700;
   }
 
   .section {
@@ -139,18 +139,6 @@
     @apply font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl;
   }
 
-  .hero-grid {
-    background-image:
-      linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-    background-size: 44px 44px;
-  }
-
-  .dotted-grid {
-    background-image: radial-gradient(currentColor 1.5px, transparent 1.5px);
-    background-size: 16px 16px;
-  }
-
   .page-hero {
     @apply relative overflow-hidden bg-navy text-white;
   }
@@ -160,35 +148,35 @@
   }
 
   .form-input {
-    @apply block w-full min-w-0 rounded-md border border-line bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/35 focus:border-brand-500 focus:ring-brand-500;
+    @apply block w-full min-w-0 rounded-lg border border-line bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-slate-400 transition-colors focus:border-brand-600 focus:ring-1 focus:ring-brand-600;
   }
 
   .form-select {
-    @apply block w-full rounded-md border border-line bg-white px-3.5 py-2.5 text-sm text-ink focus:border-brand-500 focus:ring-brand-500;
+    @apply block w-full rounded-lg border border-line bg-white px-3.5 py-2.5 text-sm text-ink transition-colors focus:border-brand-600 focus:ring-1 focus:ring-brand-600;
   }
 
   .form-checkbox {
-    @apply mt-0.5 h-4 w-4 shrink-0 rounded border-line text-brand-600 focus:ring-brand-500;
+    @apply mt-0.5 h-4 w-4 shrink-0 rounded border-line text-brand-600 focus:ring-brand-600;
   }
 
   .form-help {
-    @apply mt-1.5 text-xs leading-5 text-ink/50;
+    @apply mt-1.5 text-xs leading-5 text-slate-500;
   }
 
   .form-error {
-    @apply mt-1.5 text-xs font-medium text-red-700;
+    @apply mt-1.5 text-xs font-medium text-red-600;
   }
 
   .choice-card {
-    @apply flex items-center gap-4 rounded-lg border border-line bg-white p-4 transition hover:border-brand-300 hover:bg-brand-50/40 focus-visible:ring-brand-600;
+    @apply flex items-center gap-4 rounded-xl border border-line bg-white p-4 shadow-subtle transition hover:border-brand-300 hover:bg-brand-50/30 focus-visible:ring-2 focus-visible:ring-brand-600;
   }
 
   .choice-icon {
-    @apply grid h-11 w-11 shrink-0 place-items-center rounded-md bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-100;
+    @apply grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-brand-50 text-brand-600 ring-1 ring-inset ring-brand-200/70;
   }
 
   .step-number {
-    @apply grid h-7 w-7 shrink-0 place-items-center rounded-md bg-brand-50 text-xs font-semibold text-brand-700 ring-1 ring-inset ring-brand-200;
+    @apply grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-brand-50 text-xs font-semibold text-brand-700 ring-1 ring-inset ring-brand-200/80;
   }
 
   .check-dot {
@@ -196,7 +184,7 @@
   }
 
   .list-dot {
-    @apply mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500;
+    @apply mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-600;
   }
 }
 
