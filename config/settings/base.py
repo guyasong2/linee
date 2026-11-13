@@ -24,6 +24,10 @@ INSTALLED_APPS = [
     "apps.accounts",
     "apps.organizations",
     "apps.services",
+    "apps.checklists",
+    "apps.appointments",
+    "apps.queues",
+    "apps.operations",
     "apps.audit",
     "apps.public",
 ]

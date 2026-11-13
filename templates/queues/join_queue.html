@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load i18n linee %}
+
+{% block title %}{% translate "Join Virtual Queue" %} — {{ branch_service.display_name }} · Linee{% endblock %}
+
+{% block body %}
+  {% include "components/public_nav.html" %}
+
+  <main id="main" class="min-h-[75vh] bg-mist py-10 sm:py-16">
+    <div class="container-page max-w-2xl">
+      <div class="mb-6">
+        <a href="{% url 'services:detail' branch_service.public_id %}" class="text-sm font-medium text-brand-600 hover:text-brand-700">
+          ← {% translate "Back to service details" %}
+        </a>
+      </div>
+
+      <div class="card p-6 shadow-card sm:p-8">
+        <p class="eyebrow">{% translate "Step 1 of 2: Document Verification & Queue Ticket" %}</p>
+        <h1 class="mt-2 font-display text-2xl font-bold tracking-tight text-navy sm:text-3xl">
+          {% translate "Join Today's Virtual Queue" %}
+        </h1>
+        <p class="mt-1 text-sm text-slate-500">
+          {{ branch_service.display_name }} · {{ branch_service.branch.name }} ({{ branch_service.organization.name }})
+        </p>
+
+        <!-- Document Checklist Review -->
+        <div class="mt-6 rounded-xl border border-brand-200/80 bg-brand-50/40 p-5">
+          <div class="flex items-center gap-2">
+            <span class="step-number" aria-hidden="true">✓</span>
+            <h2 class="text-sm font-bold text-ink">
+              {% if checklist %}{{ checklist.display_title }}{% else %}{% translate "Document Readiness Checklist" %}{% endif %}
+            </h2>
+          </div>
+          <p class="mt-1.5 text-xs text-slate-600">
+            {% translate "Before joining the line, make sure you have all mandatory documents. Arriving without required paperwork results in immediate turnaway at the counter." %}
+          </p>
+
+          {% if items %}
+            <div class="mt-4 space-y-3">
+              {% for item in items %}
+                <div class="flex items-start gap-3 rounded-lg border border-line bg-white p-3 text-xs">
+                  <span class="mt-0.5 h-2 w-2 shrink-0 rounded-full {% if item.is_mandatory %}bg-brand-600{% else %}bg-slate-400{% endif %}"></span>
+                  <div class="flex-1">
+                    <p class="font-semibold text-ink">
+                      {{ item.display_title }}
+                      {% if item.is_mandatory %}
+                        <span class="text-red-600 font-bold">* ({% translate "Mandatory" %})</span>
+                      {% else %}
+                        <span class="text-slate-400">({% translate "Optional" %})</span>
+                      {% endif %}
+                    </p>
+                    {% if item.display_description %}
+                      <p class="mt-0.5 text-slate-500">{{ item.display_description }}</p>
+                    {% endif %}
+                    {% if item.display_condition %}
+                      <p class="mt-1 text-brand-700 font-medium">💡 {{ item.display_condition }}</p>
+                    {% endif %}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+
+        <form method="post" class="mt-8 space-y-5">
+          {% csrf_token %}
+
+          <div>
+            <label for="customer_name" class="form-label">{% translate "Your Full Name" %} *</label>
+            <input type="text" id="customer_name" name="customer_name" required value="{{ initial_name }}"
+              placeholder="{% translate 'e.g. Marie Ebénézer' %}" class="form-input">
+          </div>
+
+          <div>
+            <label for="customer_phone" class="form-label">{% translate "Phone number (for SMS notifications)" %}</label>
+            <input type="tel" id="customer_phone" name="customer_phone" value="{{ initial_phone }}"
+              placeholder="+237 6 00 00 00 00" class="form-input">
+            <p class="form-help">{% translate "We will notify you when your turn approaches." %}</p>
+          </div>
+
+          <div>
+            <label for="priority" class="form-label">{% translate "Priority Category" %}</label>
+            <select id="priority" name="priority" class="form-select">
+              {% for val, label in priorities %}
+                <option value="{{ val }}">{{ label }}</option>
+              {% endfor %}
+            </select>
+            <p class="form-help">{% translate "Priority is based solely on vulnerability or medical urgency, never payment." %}</p>
+          </div>
+
+          <div class="rounded-lg border border-line bg-white p-4">
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" name="acknowledged" required class="form-checkbox mt-1">
+              <span class="text-xs leading-5 text-slate-700">
+                <strong class="font-semibold text-ink">{% translate "Mandatory Document Confirmation:" %}</strong>
+                {% translate "I have reviewed the checklist and confirm that I possess all mandatory documents required for this service." %}
+              </span>
+            </label>
+          </div>
+
+          <div class="pt-4 border-t border-line flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <button type="submit" class="btn-primary w-full sm:w-auto">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              {% translate "Get Digital Queue Ticket" %}
+            </button>
+            <a href="{% url 'services:detail' branch_service.public_id %}" class="btn-secondary w-full sm:w-auto text-center">
+              {% translate "Cancel" %}
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  {% include "components/public_footer.html" %}
+{% endblock %}

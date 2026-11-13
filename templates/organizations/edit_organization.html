@@ -1,0 +1,57 @@
+{% extends "layouts/app.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "Edit" %} · {{ organization.name }} · Linee{% endblock %}
+
+{% block app_content %}
+  <div class="mb-6">
+    <a href="{% url 'organizations:dashboard' organization_slug=organization.slug %}" class="text-sm font-medium text-brand-600 hover:text-brand-700">← {% translate "Back to workspace" %}</a>
+  </div>
+
+  <div class="max-w-2xl">
+    <p class="eyebrow">{% translate "Organization profile" %}</p>
+    <h1 class="mt-2 font-display text-2xl font-semibold tracking-tight text-navy">{% translate "Edit organization" %}</h1>
+    <p class="mt-2 text-sm text-slate-500">{% translate "Update your organization's public information." %}</p>
+
+    <form method="post" class="mt-8 space-y-5">
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          {% for error in form.non_field_errors %}
+            <p>{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        {% include "components/form_field.html" with field=form.name %}
+        {% include "components/form_field.html" with field=form.legal_name %}
+      </div>
+
+      {% include "components/form_field.html" with field=form.organization_type %}
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        {% include "components/form_field.html" with field=form.phone %}
+        {% include "components/form_field.html" with field=form.email %}
+      </div>
+
+      {% include "components/form_field.html" with field=form.website %}
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        {% include "components/form_field.html" with field=form.city %}
+        {% include "components/form_field.html" with field=form.address %}
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        {% include "components/form_field.html" with field=form.timezone %}
+        {% include "components/form_field.html" with field=form.default_language %}
+      </div>
+
+      <div class="flex items-center gap-3 border-t border-line pt-6">
+        <button type="submit" class="btn-primary">{% translate "Save changes" %}</button>
+        <a href="{% url 'organizations:dashboard' organization_slug=organization.slug %}" class="btn-secondary">{% translate "Cancel" %}</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

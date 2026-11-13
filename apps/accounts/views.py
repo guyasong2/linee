@@ -152,9 +152,55 @@ def logout_view(request: HttpRequest) -> HttpResponse:
 
 @login_required
 def account(request: HttpRequest) -> HttpResponse:
+    from django.utils import timezone
+
+    from apps.appointments.models import Appointment
+    from apps.queues.models import QueueTicket
+
     memberships = memberships_for(request.user)
+    active_tickets = (
+        QueueTicket.objects.filter(
+            user=request.user,
+            status__in=[
+                QueueTicket.Status.WAITING,
+                QueueTicket.Status.CALLED,
+                QueueTicket.Status.SERVING,
+            ],
+        )
+        .select_related("branch", "branch_service__service", "called_counter")
+        .order_by("-joined_at")
+    )
+
+    recent_tickets = (
+        QueueTicket.objects.filter(user=request.user)
+        .exclude(
+            status__in=[
+                QueueTicket.Status.WAITING,
+                QueueTicket.Status.CALLED,
+                QueueTicket.Status.SERVING,
+            ]
+        )
+        .select_related("branch", "branch_service__service")
+        .order_by("-joined_at")[:5]
+    )
+
+    upcoming_appointments = (
+        Appointment.objects.filter(
+            user=request.user,
+            status=Appointment.Status.CONFIRMED,
+            appointment_date__gte=timezone.localdate(),
+        )
+        .select_related("branch", "branch_service__service")
+        .order_by("appointment_date", "scheduled_time")
+    )
+
     return render(
         request,
         "accounts/account.html",
-        {"memberships": memberships},
+        {
+            "memberships": memberships,
+            "active_tickets": active_tickets,
+            "recent_tickets": recent_tickets,
+            "upcoming_appointments": upcoming_appointments,
+        },
     )

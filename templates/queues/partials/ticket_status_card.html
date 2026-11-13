@@ -1,0 +1,75 @@
+{% load i18n %}
+
+<div id="ticket-live-card" class="rounded-2xl border border-line bg-white p-6 shadow-hero sm:p-8 text-center transition-all">
+  <div class="flex items-center justify-between">
+    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">
+      {{ ticket.branch_service.organization.name }}
+    </span>
+    <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-semibold
+      {% if ticket.status == 'called' %}bg-amber-100 text-amber-800 ring-1 ring-amber-300 animate-pulse
+      {% elif ticket.status == 'serving' %}bg-emerald-100 text-emerald-800 ring-1 ring-emerald-300
+      {% elif ticket.status == 'completed' %}bg-slate-100 text-slate-800 ring-1 ring-slate-300
+      {% elif ticket.status == 'no_show' or ticket.status == 'cancelled' %}bg-red-100 text-red-800 ring-1 ring-red-300
+      {% else %}bg-brand-50 text-brand-700 ring-1 ring-brand-200{% endif %}">
+      <span class="h-1.5 w-1.5 rounded-full 
+        {% if ticket.status == 'called' %}bg-amber-500
+        {% elif ticket.status == 'serving' %}bg-emerald-500
+        {% elif ticket.status == 'completed' %}bg-slate-500
+        {% elif ticket.status == 'no_show' or ticket.status == 'cancelled' %}bg-red-500
+        {% else %}bg-brand-500{% endif %}"></span>
+      {{ ticket.get_status_display }}
+    </span>
+  </div>
+
+  <!-- Ticket Number Display -->
+  <div class="my-6">
+    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-600">{% translate "Your Ticket Number" %}</p>
+    <div class="mt-2 font-display text-5xl sm:text-6xl font-bold tracking-tight text-navy">
+      {{ ticket.ticket_number }}
+    </div>
+    <p class="mt-2 text-sm font-medium text-slate-600">{{ ticket.branch_service.display_name }}</p>
+  </div>
+
+  {% if ticket.status == 'called' %}
+    <div class="rounded-xl border border-amber-300 bg-amber-50 p-5 text-amber-950 my-6 animate-pulse">
+      <p class="text-sm font-semibold uppercase tracking-wider text-amber-700">📢 {% translate "YOU ARE BEING CALLED NOW!" %}</p>
+      <p class="mt-1 text-2xl font-bold">
+        {% if ticket.called_counter %}{{ ticket.called_counter.name }}{% else %}{% translate "Counter Desk" %}{% endif %}
+      </p>
+      <p class="mt-2 text-xs text-amber-800">{% translate "Please walk directly to your designated counter. If you are not present, your ticket may be marked no-show." %}</p>
+    </div>
+  {% elif ticket.status == 'serving' %}
+    <div class="rounded-xl border border-emerald-300 bg-emerald-50 p-5 text-emerald-950 my-6">
+      <p class="text-sm font-semibold text-emerald-800">✅ {% translate "Currently Being Served" %}</p>
+      <p class="mt-1 text-xl font-bold">
+        {% if ticket.called_counter %}{{ ticket.called_counter.name }}{% endif %}
+      </p>
+    </div>
+  {% elif ticket.status == 'completed' %}
+    <div class="rounded-xl border border-line bg-slate-50 p-5 text-slate-700 my-6">
+      <p class="text-sm font-semibold text-ink">🎉 {% translate "Service Completed" %}</p>
+      <p class="mt-1 text-xs text-slate-500">{% translate "Thank you for using Linee queue coordination." %}</p>
+    </div>
+  {% elif ticket.status == 'waiting' %}
+    <!-- Position and Estimated Wait -->
+    <div class="grid grid-cols-2 gap-3 my-6 text-left">
+      <div class="rounded-xl border border-line bg-mist p-4">
+        <p class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">{% translate "Ahead of you" %}</p>
+        <p class="mt-1 font-display text-3xl font-bold text-navy">
+          {{ people_ahead }} <span class="text-xs font-normal text-slate-500">{% translate "people" %}</span>
+        </p>
+      </div>
+      <div class="rounded-xl border border-line bg-mist p-4">
+        <p class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">{% translate "Estimated wait" %}</p>
+        <p class="mt-1 font-display text-3xl font-bold text-navy">
+          ~{{ estimated_wait }} <span class="text-xs font-normal text-slate-500">{% translate "min" %}</span>
+        </p>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="border-t border-line pt-4 text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-2">
+    <span>📍 {{ ticket.branch.name }} · {{ ticket.branch.city }}</span>
+    <span>🕒 {% translate "Joined" %} {{ ticket.joined_at|date:"H:i" }}</span>
+  </div>
+</div>

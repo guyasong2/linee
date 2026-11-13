@@ -12,7 +12,15 @@
         {{ organization.get_organization_type_display }} · {{ organization.city }}
       </p>
     </div>
-    <span class="badge self-start">{{ organization.get_status_display }}</span>
+    <div class="flex items-center gap-3">
+      <span class="badge self-start">{{ organization.get_status_display }}</span>
+      {% if membership.role == "organization_admin" %}
+        <a href="{% url 'organizations:edit' organization_slug=organization.slug %}" class="btn-secondary !px-3 !py-2 text-xs">
+          <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M14.85 3.65a2.1 2.1 0 0 1 2.97 2.97l-9.9 9.9-3.84.87.87-3.84 9.9-9.9Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          {% translate "Edit" %}
+        </a>
+      {% endif %}
+    </div>
   </div>
 
   {% if organization.status == "pending" %}
@@ -21,58 +29,70 @@
     </div>
   {% endif %}
 
-  <div class="mt-8 grid gap-4 sm:grid-cols-3">
-    <div class="card p-5">
+  <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <a href="{% url 'organizations:branches' organization_slug=organization.slug %}" class="card p-5 transition-all hover:border-brand-300 hover:shadow">
       <p class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">{% translate "Branches" %}</p>
       <p class="mt-2 text-2xl font-bold text-navy">{{ branch_count }}</p>
-    </div>
-    <div class="card p-5">
+    </a>
+    <a href="{% url 'organizations:services' organization_slug=organization.slug %}" class="card p-5 transition-all hover:border-brand-300 hover:shadow">
       <p class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">{% translate "Services" %}</p>
       <p class="mt-2 text-2xl font-bold text-navy">{{ service_count }}</p>
-    </div>
+    </a>
     <div class="card p-5">
+      <p class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">{% translate "Offerings" %}</p>
+      <p class="mt-2 text-2xl font-bold text-navy">{{ offering_count }}</p>
+    </div>
+    <a href="{% url 'organizations:team' organization_slug=organization.slug %}" class="card p-5 transition-all hover:border-brand-300 hover:shadow">
       <p class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">{% translate "Team members" %}</p>
       <p class="mt-2 text-2xl font-bold text-navy">{{ team_count }}</p>
-    </div>
+    </a>
   </div>
 
   <div class="mt-6 grid gap-6 lg:grid-cols-3">
     <section class="card p-6 lg:col-span-2">
-      <h2 class="text-base font-semibold text-ink">{% translate "Setup" %}</h2>
+      <h2 class="text-base font-semibold text-ink">{% translate "Quick actions" %}</h2>
       <p class="mt-2 text-sm leading-6 text-slate-500">
-        {% translate "Complete these steps before customers can find and use your services." %}
+        {% translate "Manage your organization from these links." %}
       </p>
 
-      <ol class="mt-6 space-y-4">
-        <li class="flex gap-3">
-          <span class="check-dot mt-1 bg-brand-600" aria-hidden="true"></span>
+      <div class="mt-6 grid gap-3 sm:grid-cols-2">
+        <a href="{% url 'organizations:edit' organization_slug=organization.slug %}" class="choice-card">
+          <span class="choice-icon">
+            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </span>
           <div>
-            <p class="text-sm font-semibold text-ink">{% translate "Organization profile" %}</p>
-            <p class="mt-0.5 text-sm text-slate-500">{% translate "Name, type and contact details are recorded." %}</p>
+            <p class="text-sm font-semibold text-ink">{% translate "Edit profile" %}</p>
+            <p class="mt-0.5 text-xs text-slate-500">{% translate "Update name, contact and details" %}</p>
           </div>
-        </li>
-        <li class="flex gap-3">
-          <span class="check-dot mt-1" aria-hidden="true"></span>
+        </a>
+        <a href="{% url 'organizations:branches' organization_slug=organization.slug %}" class="choice-card">
+          <span class="choice-icon">
+            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none"><path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </span>
           <div>
-            <p class="text-sm font-semibold text-ink">{% translate "Add your first branch" %}</p>
-            <p class="mt-0.5 text-sm text-slate-500">{% translate "Branch management is the next module to be built." %}</p>
+            <p class="text-sm font-semibold text-ink">{% translate "Manage branches" %}</p>
+            <p class="mt-0.5 text-xs text-slate-500">{% translate "Add, edit or close branches" %}</p>
           </div>
-        </li>
-        <li class="flex gap-3">
-          <span class="check-dot mt-1" aria-hidden="true"></span>
+        </a>
+        <a href="{% url 'organizations:services' organization_slug=organization.slug %}" class="choice-card">
+          <span class="choice-icon">
+            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none"><path d="M4 5h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.5"/><path d="M7 9h6M7 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </span>
           <div>
-            <p class="text-sm font-semibold text-ink">{% translate "Add services and document checklists" %}</p>
-            <p class="mt-0.5 text-sm text-slate-500">{% translate "Services, counters and checklists follow branch setup." %}</p>
+            <p class="text-sm font-semibold text-ink">{% translate "Manage services" %}</p>
+            <p class="mt-0.5 text-xs text-slate-500">{% translate "Define services and categories" %}</p>
           </div>
-        </li>
-        <li class="flex gap-3">
-          <span class="check-dot mt-1" aria-hidden="true"></span>
+        </a>
+        <a href="{% url 'organizations:team' organization_slug=organization.slug %}" class="choice-card">
+          <span class="choice-icon">
+            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none"><circle cx="8" cy="7" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M2 17a6 6 0 0 1 12 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M13 7a3 3 0 1 1 0 0M15 17a4 4 0 0 0-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </span>
           <div>
-            <p class="text-sm font-semibold text-ink">{% translate "Request activation" %}</p>
-            <p class="mt-0.5 text-sm text-slate-500">{% translate "A platform administrator reviews the configuration before it goes public." %}</p>
+            <p class="text-sm font-semibold text-ink">{% translate "Manage team" %}</p>
+            <p class="mt-0.5 text-xs text-slate-500">{% translate "Invite members and assign roles" %}</p>
           </div>
-        </li>
-      </ol>
+        </a>
+      </div>
     </section>
 
     <aside class="space-y-6">

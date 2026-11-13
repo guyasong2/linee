@@ -1,0 +1,75 @@
+{% extends "layouts/app.html" %}
+{% load i18n linee %}
+
+{% block title %}{% translate "Assisted Walk-In Registration" %} · Linee{% endblock %}
+
+{% block app_content %}
+  <div class="mb-6">
+    <a href="{% url 'operations:counter_dashboard' organization_slug=organization.slug %}" class="text-sm font-medium text-brand-600 hover:text-brand-700">
+      ← {% translate "Back to Counter Dashboard" %}
+    </a>
+  </div>
+
+  <div class="max-w-2xl">
+    <p class="eyebrow">{% translate "Front-Desk Rapid Intake (< 1 min)" %}</p>
+    <h1 class="mt-2 font-display text-2xl font-bold tracking-tight text-navy">
+      {% translate "Assisted Walk-In Registration" %}
+    </h1>
+    <p class="mt-1 text-sm text-slate-500">
+      {% translate "Issue a physical or SMS queue ticket for arriving walk-in visitors who lack a smartphone." %}
+    </p>
+
+    <form method="post" class="mt-8 card p-6 shadow-card space-y-5">
+      {% csrf_token %}
+
+      <div>
+        <label for="branch_service_id" class="form-label font-semibold">{% translate "Select Service" %} *</label>
+        <select id="branch_service_id" name="branch_service_id" required class="form-select">
+          <option value="">{% translate "— Choose a Service —" %}</option>
+          {% for bs in branch_services %}
+            <option value="{{ bs.id }}">
+              {{ bs.display_name }} ({{ bs.branch.name }}) — {% if bs.current_fee %}{{ bs.current_fee.amount_xaf|xaf }}{% else %}Free{% endif %}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label for="customer_name" class="form-label font-semibold">{% translate "Customer Full Name" %} *</label>
+          <input type="text" id="customer_name" name="customer_name" required placeholder="{% translate 'Customer name' %}" class="form-input">
+        </div>
+        <div>
+          <label for="customer_phone" class="form-label font-semibold">{% translate "Mobile Phone (Optional)" %}</label>
+          <input type="tel" id="customer_phone" name="customer_phone" placeholder="+237 6 00 00 00 00" class="form-input">
+        </div>
+      </div>
+
+      <div>
+        <label for="priority" class="form-label font-semibold">{% translate "Priority Classification" %}</label>
+        <select id="priority" name="priority" class="form-select">
+          {% for val, label in priorities %}
+            <option value="{{ val }}">{{ label }}</option>
+          {% endfor %}
+        </select>
+        <p class="form-help">{% translate "Assign vulnerable or emergency status if customer is elderly, pregnant, or has acute medical needs." %}</p>
+      </div>
+
+      <div class="rounded-lg border border-line bg-mist p-3.5 text-xs text-slate-600">
+        <label class="flex items-center gap-2 cursor-pointer font-medium text-ink">
+          <input type="checkbox" required class="form-checkbox">
+          <span>{% translate "Agent Confirmation: I have physically verified that the customer brought the mandatory documents for this service." %}</span>
+        </label>
+      </div>
+
+      <div class="pt-4 border-t border-line flex items-center justify-between">
+        <button type="submit" class="btn-primary">
+          🎟️ {% translate "Generate & Print Queue Ticket" %}
+        </button>
+        <a href="{% url 'operations:counter_dashboard' organization_slug=organization.slug %}" class="btn-secondary">
+          {% translate "Cancel" %}
+        </a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

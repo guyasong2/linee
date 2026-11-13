@@ -1,0 +1,176 @@
+{% extends "layouts/app.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "Counter Workspace" %} · {{ branch.name }} — Linee{% endblock %}
+
+{% block app_content %}
+  <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-line pb-6">
+    <div>
+      <div class="flex items-center gap-2">
+        <p class="eyebrow">{% translate "Staff Counter Operations" %}</p>
+        <span class="badge">{{ branch.name }}</span>
+      </div>
+      <h1 class="mt-1 font-display text-2xl font-bold tracking-tight text-navy">
+        {{ organization.name }}
+      </h1>
+    </div>
+
+    <!-- Quick Switch & Navigation -->
+    <div class="flex flex-wrap items-center gap-3">
+      {% if counters %}
+        <form method="post" action="" id="counter-select-form" class="flex items-center gap-2">
+          {% csrf_token %}
+          <label for="counter_select" class="text-xs font-semibold text-slate-500">{% translate "My Desk:" %}</label>
+          <select id="counter_select" class="form-select text-xs !py-1.5 font-bold text-navy"
+            onchange="this.form.action='{% url 'operations:select_counter' organization_slug=organization.slug counter_id=999999 %}'.replace('999999', this.value); this.form.submit();">
+            {% for c in counters %}
+              <option value="{{ c.id }}" {% if active_counter and active_counter.id == c.id %}selected{% endif %}>
+                {{ c.name }} ({{ c.code }})
+              </option>
+            {% endfor %}
+          </select>
+        </form>
+      {% endif %}
+
+      <a href="{% url 'operations:walk_in' organization_slug=organization.slug %}" class="btn-secondary !px-3 !py-1.5 text-xs">
+        + {% translate "Walk-in Register" %}
+      </a>
+      <a href="{% url 'operations:display_board' branch.public_id %}" target="_blank" class="btn-secondary !px-3 !py-1.5 text-xs">
+        📺 {% translate "Display Board" %} ↗
+      </a>
+    </div>
+  </div>
+
+  <!-- Operational Grid -->
+  <div class="mt-8 grid gap-6 lg:grid-cols-3">
+    <!-- Left 2 Cols: Active Service Desk -->
+    <div class="space-y-6 lg:col-span-2">
+      <!-- Big Action Call Panel -->
+      <div class="rounded-2xl border-2 border-brand-200 bg-white p-6 shadow-hero sm:p-8">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">
+              {% if active_counter %}{{ active_counter.name }}{% else %}{% translate "Desk" %}{% endif %}
+            </p>
+            <h2 class="text-lg font-bold text-navy">{% translate "Next in Line" %}</h2>
+            <p class="text-xs text-slate-500">
+              {% blocktranslate with count=waiting_count %}{{ count }} customers waiting{% endblocktranslate %} · 
+              {% blocktranslate with count=completed_count %}{{ count }} completed today{% endblocktranslate %}
+            </p>
+          </div>
+
+          <form method="post" action="{% url 'operations:call_next' organization_slug=organization.slug %}">
+            {% csrf_token %}
+            <button type="submit" class="btn-primary !px-8 !py-4 text-base font-bold shadow-md hover:scale-[1.02] transition-transform w-full sm:w-auto">
+              📢 {% translate "CALL NEXT TICKET" %}
+            </button>
+          </form>
+        </div>
+
+        <!-- Currently Called / Serving Ticket -->
+        {% if current_ticket %}
+          <div class="mt-6 rounded-xl border border-brand-300 bg-brand-50/50 p-6 transition-all">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold uppercase tracking-wider text-brand-700">
+                {% if current_ticket.status == 'called' %}🔔 {% translate "TICKET CALLED" %}{% else %}🟢 {% translate "NOW SERVING" %}{% endif %}
+              </span>
+              <span class="badge !bg-brand-600 !text-white">{{ current_ticket.get_status_display }}</span>
+            </div>
+
+            <div class="my-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div>
+                <p class="font-display text-5xl font-bold tracking-tight text-navy">{{ current_ticket.ticket_number }}</p>
+                <p class="mt-1 text-sm font-semibold text-ink">{{ current_ticket.customer_name }}</p>
+                <p class="text-xs text-slate-500">{{ current_ticket.branch_service.display_name }}</p>
+              </div>
+
+              {% if current_ticket.customer_phone %}
+                <div class="text-xs text-slate-500">
+                  <span>📱 {{ current_ticket.customer_phone }}</span>
+                </div>
+              {% endif %}
+            </div>
+
+            <!-- Action buttons for current ticket -->
+            <div class="mt-6 pt-4 border-t border-brand-200/80 flex flex-wrap gap-2">
+              {% if current_ticket.status == 'called' %}
+                <form method="post" action="{% url 'operations:serve' organization_slug=organization.slug ticket_id=current_ticket.id %}">
+                  {% csrf_token %}
+                  <button type="submit" class="btn-primary !py-2 !px-4 text-xs font-semibold">
+                    ▶ {% translate "Start Serving" %}
+                  </button>
+                </form>
+
+                <form method="post" action="{% url 'operations:recall' organization_slug=organization.slug ticket_id=current_ticket.id %}">
+                  {% csrf_token %}
+                  <button type="submit" class="btn-secondary !py-2 !px-4 text-xs font-semibold">
+                    🔄 {% translate "Recall Ticket" %} ({{ current_ticket.recall_count }})
+                  </button>
+                </form>
+
+                <form method="post" action="{% url 'operations:no_show' organization_slug=organization.slug ticket_id=current_ticket.id %}"
+                  onsubmit="return confirm('{% translate "Mark customer as No-Show?" %}')">
+                  {% csrf_token %}
+                  <button type="submit" class="btn-secondary !py-2 !px-4 text-xs font-semibold text-red-600 hover:text-red-700">
+                    ✕ {% translate "Mark No-Show" %}
+                  </button>
+                </form>
+              {% elif current_ticket.status == 'serving' %}
+                <form method="post" action="{% url 'operations:complete' organization_slug=organization.slug ticket_id=current_ticket.id %}" class="flex-1 flex gap-2">
+                  {% csrf_token %}
+                  <input type="text" name="notes" placeholder="{% translate 'Optional notes / outcome' %}" class="form-input text-xs !py-1.5 flex-1">
+                  <button type="submit" class="btn-primary !py-2 !px-5 text-xs font-semibold bg-emerald-600 hover:bg-emerald-700">
+                    ✓ {% translate "Finish & Complete" %}
+                  </button>
+                </form>
+              {% endif %}
+            </div>
+          </div>
+        {% else %}
+          <div class="mt-6 rounded-xl border border-dashed border-line bg-mist p-8 text-center text-slate-400 text-xs">
+            {% translate "No customer currently at this counter. Click 'CALL NEXT TICKET' above to summon the next customer." %}
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Live Waiting Queue Table -->
+      <div class="card p-6 shadow-card">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-sm font-bold text-ink uppercase tracking-wider">
+            {% translate "Current Waiting Line" %} ({{ waiting_count }})
+          </h3>
+          <span class="text-[11px] text-slate-400">{% translate "Auto-refreshing every 5s" %}</span>
+        </div>
+
+        <div hx-get="{% url 'operations:counter_dashboard' organization_slug=organization.slug %}" hx-trigger="every 5s" hx-swap="innerHTML">
+          {% include "operations/partials/queue_list.html" with waiting_tickets=waiting_tickets %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Sidebar -->
+    <aside class="space-y-6">
+      <div class="card p-6 shadow-card">
+        <h3 class="text-sm font-semibold text-ink">{% translate "Facility Desk Guide" %}</h3>
+        <ul class="mt-3 space-y-2.5 text-xs leading-5 text-slate-600">
+          <li><strong>1. Call:</strong> {% translate "Announces the ticket on the TV screen and sends an SMS/push alert." %}</li>
+          <li><strong>2. Serve:</strong> {% translate "Click 'Start Serving' as soon as the customer approaches your desk." %}</li>
+          <li><strong>3. Complete:</strong> {% translate "Mark service as complete to release the counter for the next ticket." %}</li>
+          <li><strong>4. Walk-Ins:</strong> {% translate "Use the 'Walk-in Register' tool for non-smartphone or elderly visitors." %}</li>
+        </ul>
+      </div>
+
+      <div class="card p-6 shadow-card">
+        <h3 class="text-sm font-semibold text-ink">{% translate "Active Counters" %}</h3>
+        <div class="mt-3 space-y-2">
+          {% for c in counters %}
+            <div class="flex items-center justify-between text-xs py-1.5 border-b border-line last:border-0">
+              <span class="font-medium text-ink">{{ c.name }} ({{ c.code }})</span>
+              <span class="badge {% if c.status == 'open' %}!bg-emerald-50 !text-emerald-700{% endif %}">{{ c.get_status_display }}</span>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </aside>
+  </div>
+{% endblock %}

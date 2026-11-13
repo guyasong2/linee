@@ -1,0 +1,68 @@
+{% load i18n %}
+
+<div id="board-content" class="grid gap-6 md:grid-cols-2">
+  <!-- Left Side: Hero Recent Announcement -->
+  <div class="flex flex-col justify-between rounded-3xl border-2 border-brand-500 bg-white p-8 shadow-2xl">
+    <div>
+      <div class="flex items-center justify-between">
+        <span class="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-xs font-bold text-brand-700 ring-1 ring-inset ring-brand-300">
+          <span class="h-2 w-2 rounded-full bg-brand-600 animate-ping"></span>
+          {% translate "CURRENTLY CALLED" %}
+        </span>
+        <span class="text-xs text-slate-400 font-mono">{{ now|date:"H:i:s" }}</span>
+      </div>
+
+      {% if active_announcements %}
+        {% with latest=active_announcements.0 %}
+          <div class="my-10 text-center">
+            <p class="text-sm font-bold uppercase tracking-[0.2em] text-slate-400">{% translate "Ticket Number" %}</p>
+            <div class="mt-2 font-display text-7xl sm:text-8xl font-black tracking-tight text-navy">
+              {{ latest.ticket_number }}
+            </div>
+            <div class="mt-6 inline-block rounded-2xl bg-brand-600 px-6 py-3 text-white font-display text-3xl font-extrabold shadow-lg">
+              👉 {% if latest.called_counter %}{{ latest.called_counter.name }}{% else %}{% translate "Counter" %}{% endif %}
+            </div>
+            <p class="mt-4 text-base font-semibold text-slate-600">{{ latest.branch_service.display_name }}</p>
+          </div>
+        {% endwith %}
+      {% else %}
+        <div class="my-20 text-center text-slate-400 font-medium">
+          {% translate "All counters currently idle or awaiting customers." %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="border-t border-line pt-4 flex items-center justify-between text-xs text-slate-400">
+      <span>{% translate "Facility Queue Display" %}</span>
+      <span>{% blocktranslate with count=waiting_count %}{{ count }} in waiting area{% endblocktranslate %}</span>
+    </div>
+  </div>
+
+  <!-- Right Side: Recent History List -->
+  <div class="rounded-3xl border border-line bg-white p-6 shadow-xl">
+    <h2 class="text-xs font-bold uppercase tracking-[0.16em] text-slate-400 mb-4">
+      {% translate "Recent Desk Calls" %}
+    </h2>
+
+    <div class="divide-y divide-line">
+      {% for ann in active_announcements %}
+        <div class="py-4 flex items-center justify-between {% if forloop.first %}bg-brand-50/40 rounded-xl px-3{% endif %}">
+          <div class="flex items-center gap-4">
+            <span class="font-display text-3xl font-black text-navy">{{ ann.ticket_number }}</span>
+            <div>
+              <p class="text-xs font-semibold text-slate-700">{{ ann.branch_service.display_name }}</p>
+              <p class="text-[10px] text-slate-400">{{ ann.called_at|date:"H:i" }}</p>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="inline-flex rounded-xl bg-slate-100 px-3 py-1.5 font-display text-sm font-bold text-navy border border-line">
+              {% if ann.called_counter %}{{ ann.called_counter.name }}{% else %}-{% endif %}
+            </span>
+          </div>
+        </div>
+      {% empty %}
+        <p class="py-8 text-center text-xs text-slate-400">{% translate "No recent announcements." %}</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>

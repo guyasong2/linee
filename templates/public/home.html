@@ -8,16 +8,16 @@
 
   <main id="main">
     <section class="border-b border-line bg-white">
-      <div class="container-page grid gap-12 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-20">
-        <div>
+      <div class="container-page py-20 lg:py-28">
+        <div class="mx-auto flex flex-col items-center text-center">
           <p class="eyebrow">{% translate "Queue management for essential services" %}</p>
-          <h1 class="mt-4 max-w-xl font-display text-4xl font-semibold leading-[1.1] tracking-tight text-navy sm:text-5xl">
+          <h1 class="mt-4 max-w-3xl font-display text-4xl font-semibold leading-[1.1] tracking-tight text-navy sm:text-5xl">
             {% translate "Join the queue before you leave home." %}
           </h1>
           <p class="mt-5 max-w-xl text-base leading-7 text-slate-600">
             {% translate "Book an appointment or join today's queue at a participating organization. Review what to bring, get a ticket, and track your place from your phone." %}
           </p>
-          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <a href="{% url 'services:search' %}" class="btn-primary">
               {% translate "Find a service" %}
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -31,7 +31,7 @@
           </p>
         </div>
 
-        <div class="rounded-xl border border-line bg-mist p-6 sm:p-8 shadow-card">
+        <div class="mx-auto mt-10 max-w-xl rounded-xl border border-line bg-mist p-6 sm:p-8 shadow-card">
           <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{% translate "One visit, three steps" %}</p>
           <ol class="mt-6 space-y-5">
             <li class="flex gap-4">

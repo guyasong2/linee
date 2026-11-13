@@ -1,0 +1,58 @@
+{% extends "layouts/app.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "Team" %} · {{ organization.name }} · Linee{% endblock %}
+
+{% block app_content %}
+  <div class="mb-6">
+    <a href="{% url 'organizations:dashboard' organization_slug=organization.slug %}" class="text-sm font-medium text-brand-600 hover:text-brand-700">← {% translate "Back to workspace" %}</a>
+  </div>
+
+  <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+    <div>
+      <p class="eyebrow">{% translate "Team management" %}</p>
+      <h1 class="mt-2 font-display text-2xl font-semibold tracking-tight text-navy">{% translate "Team members" %}</h1>
+      <p class="mt-1 text-sm text-slate-500">{{ organization.name }}</p>
+    </div>
+    <a href="{% url 'organizations:team_invite' organization_slug=organization.slug %}" class="btn-primary self-start">
+      <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      {% translate "Invite member" %}
+    </a>
+  </div>
+
+  {% if members %}
+    <div class="mt-6 space-y-3">
+      {% for member in members %}
+        <div class="card flex flex-col gap-3 p-5 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p class="text-sm font-semibold text-ink">{{ member.user.get_full_name }}</p>
+            <p class="mt-0.5 text-xs text-slate-500">
+              {{ member.user.phone|default:"" }}
+              {% if member.user.phone and member.user.email %} · {% endif %}
+              {{ member.user.email|default:"" }}
+            </p>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="badge">{{ member.get_role_display }}</span>
+            {% if member.branch %}
+              <span class="text-xs text-slate-500">{{ member.branch.name }}</span>
+            {% endif %}
+            {% if member.user != request.user %}
+              <form method="post" action="{% url 'organizations:team_remove' organization_slug=organization.slug pk=member.pk %}"
+                onsubmit="return confirm('{% translate "Remove this team member?" %}')">
+                {% csrf_token %}
+                <button type="submit" class="text-xs font-medium text-red-600 hover:text-red-700">{% translate "Remove" %}</button>
+              </form>
+            {% else %}
+              <span class="text-xs text-slate-400">{% translate "You" %}</span>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="mt-8 text-center">
+      <p class="text-sm text-slate-500">{% translate "No team members yet." %}</p>
+    </div>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "layouts/app.html" %}
+{% load i18n %}
+
+{% block title %}{% if editing %}{% translate "Edit service" %}{% else %}{% translate "Add service" %}{% endif %} · {{ organization.name }} · Linee{% endblock %}
+
+{% block app_content %}
+  <div class="mb-6">
+    <a href="{% url 'organizations:services' organization_slug=organization.slug %}" class="text-sm font-medium text-brand-600 hover:text-brand-700">← {% translate "Back to services" %}</a>
+  </div>
+
+  <div class="max-w-2xl">
+    <p class="eyebrow">{% translate "Service" %}</p>
+    <h1 class="mt-2 font-display text-2xl font-semibold tracking-tight text-navy">
+      {% if editing %}{% translate "Edit service" %}{% else %}{% translate "Add a new service" %}{% endif %}
+    </h1>
+    <p class="mt-2 text-sm text-slate-500">{{ organization.name }}</p>
+
+    <form method="post" class="mt-8 space-y-5">
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          {% for error in form.non_field_errors %}
+            <p>{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        {% include "components/form_field.html" with field=form.code %}
+        {% include "components/form_field.html" with field=form.category %}
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        {% include "components/form_field.html" with field=form.name_en %}
+        {% include "components/form_field.html" with field=form.name_fr %}
+      </div>
+
+      {% include "components/form_field.html" with field=form.description_en %}
+      {% include "components/form_field.html" with field=form.description_fr %}
+
+      {% if editing %}
+        <div class="flex items-center gap-2">
+          {{ form.is_active }}
+          <label for="{{ form.is_active.id_for_label }}" class="text-sm font-medium text-ink">{% translate "Active" %}</label>
+        </div>
+      {% endif %}
+
+      <div class="flex items-center gap-3 border-t border-line pt-6">
+        <button type="submit" class="btn-primary">
+          {% if editing %}{% translate "Save changes" %}{% else %}{% translate "Add service" %}{% endif %}
+        </button>
+        <a href="{% url 'organizations:services' organization_slug=organization.slug %}" class="btn-secondary">{% translate "Cancel" %}</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

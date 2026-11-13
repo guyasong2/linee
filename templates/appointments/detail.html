@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load i18n linee %}
+
+{% block title %}{% translate "Appointment" %} {{ appointment.reference }} — Linee{% endblock %}
+
+{% block body %}
+  {% include "components/public_nav.html" %}
+
+  <main id="main" class="min-h-[80vh] bg-mist py-10 sm:py-16">
+    <div class="container-page max-w-lg">
+      <div class="mb-6 flex items-center justify-between">
+        <a href="{% url 'accounts:account' %}" class="text-sm font-medium text-brand-600 hover:text-brand-700">
+          ← {% translate "My Account" %}
+        </a>
+        <span class="badge">{{ appointment.get_status_display }}</span>
+      </div>
+
+      <div class="rounded-2xl border border-line bg-white p-6 shadow-hero sm:p-8">
+        <div class="border-b border-line pb-6 text-center">
+          <p class="text-xs font-semibold uppercase tracking-wider text-brand-600">{% translate "Appointment Confirmation" %}</p>
+          <div class="mt-2 font-display text-3xl font-bold tracking-tight text-navy">
+            {{ appointment.reference }}
+          </div>
+          <p class="mt-1 text-sm font-medium text-slate-600">{{ appointment.customer_name }}</p>
+        </div>
+
+        <div class="py-6 space-y-4 text-sm">
+          <div class="flex items-start justify-between">
+            <span class="text-slate-400">{% translate "Service" %}</span>
+            <span class="font-semibold text-ink text-right">{{ appointment.branch_service.display_name }}</span>
+          </div>
+
+          <div class="flex items-start justify-between">
+            <span class="text-slate-400">{% translate "Date & Time" %}</span>
+            <span class="font-bold text-brand-600 text-right">
+              {{ appointment.appointment_date|date:"l, d F Y" }}<br>
+              {{ appointment.scheduled_time|time:"H:i" }}
+            </span>
+          </div>
+
+          <div class="flex items-start justify-between">
+            <span class="text-slate-400">{% translate "Facility" %}</span>
+            <span class="font-medium text-ink text-right">
+              {{ appointment.organization.name }}<br>
+              <span class="text-xs text-slate-500">{{ appointment.branch.name }} ({{ appointment.branch.city }})</span>
+            </span>
+          </div>
+
+          <div class="flex items-start justify-between">
+            <span class="text-slate-400">{% translate "Address" %}</span>
+            <span class="text-xs text-slate-600 text-right">{{ appointment.branch.address|default:appointment.branch.city }}</span>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-line bg-mist p-4 text-xs leading-5 text-slate-600">
+          <p class="font-semibold text-ink">{% translate "Arrival Instructions:" %}</p>
+          <p class="mt-1">{% translate "Please arrive 10 minutes before your scheduled slot with your mandatory physical documents. Show this reference code at reception or the self-service kiosk to be checked in." %}</p>
+        </div>
+
+        {% if appointment.status == 'confirmed' %}
+          <div class="mt-6 border-t border-line pt-4 text-center">
+            <form method="post" action="{% url 'appointments:cancel' appointment.public_id %}" onsubmit="return confirm('{% translate "Cancel this appointment booking?" %}')">
+              {% csrf_token %}
+              <button type="submit" class="text-xs font-medium text-red-600 hover:text-red-700">
+                {% translate "Cancel this appointment" %}
+              </button>
+            </form>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="mt-6 text-center">
+        <a href="{% url 'services:search' %}" class="btn-secondary w-full">
+          {% translate "Find another service" %}
+        </a>
+      </div>
+    </div>
+  </main>
+
+  {% include "components/public_footer.html" %}
+{% endblock %}

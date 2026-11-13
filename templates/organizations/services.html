@@ -1,0 +1,53 @@
+{% extends "layouts/app.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "Services" %} · {{ organization.name }} · Linee{% endblock %}
+
+{% block app_content %}
+  <div class="mb-6">
+    <a href="{% url 'organizations:dashboard' organization_slug=organization.slug %}" class="text-sm font-medium text-brand-600 hover:text-brand-700">← {% translate "Back to workspace" %}</a>
+  </div>
+
+  <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+    <div>
+      <p class="eyebrow">{% translate "Service management" %}</p>
+      <h1 class="mt-2 font-display text-2xl font-semibold tracking-tight text-navy">{% translate "Services" %}</h1>
+      <p class="mt-1 text-sm text-slate-500">{{ organization.name }}</p>
+    </div>
+    <a href="{% url 'organizations:service_add' organization_slug=organization.slug %}" class="btn-primary self-start">
+      <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      {% translate "Add service" %}
+    </a>
+  </div>
+
+  {% if services %}
+    <div class="mt-6 space-y-3">
+      {% for service in services %}
+        <div class="card flex flex-col gap-3 p-5 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <div class="flex items-center gap-2">
+              <p class="text-sm font-semibold text-ink">{{ service.name_en }}</p>
+              {% if not service.is_active %}
+                <span class="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-500">{% translate "Inactive" %}</span>
+              {% endif %}
+            </div>
+            <p class="mt-0.5 text-xs text-slate-500">
+              {{ service.code }} · {{ service.get_category_display }}
+              {% if service.name_fr %} · {{ service.name_fr }}{% endif %}
+            </p>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="badge">{{ service.get_category_display }}</span>
+            <a href="{% url 'organizations:service_edit' organization_slug=organization.slug pk=service.pk %}"
+              class="text-sm font-semibold text-brand-600 hover:text-brand-700">{% translate "Edit" %}</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="mt-8 text-center">
+      <p class="text-sm text-slate-500">{% translate "No services yet." %}</p>
+      <a href="{% url 'organizations:service_add' organization_slug=organization.slug %}" class="btn-primary mt-4">{% translate "Add your first service" %}</a>
+    </div>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load i18n linee %}
+
+{% block title %}{% translate "Ticket" %} {{ ticket.ticket_number }} — Linee{% endblock %}
+
+{% block body %}
+  {% include "components/public_nav.html" %}
+
+  <main id="main" class="min-h-[80vh] bg-mist py-10 sm:py-16">
+    <div class="container-page max-w-lg">
+      <div class="mb-6 flex items-center justify-between">
+        <a href="{% url 'accounts:account' %}" class="text-sm font-medium text-brand-600 hover:text-brand-700">
+          ← {% translate "My Account" %}
+        </a>
+        <span class="inline-flex items-center gap-1.5 text-xs text-slate-500">
+          <span id="ws-indicator" class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" title="Live real-time updates active"></span>
+          {% translate "Live updates" %}
+        </span>
+      </div>
+
+      <!-- Live Ticket Container (Updates via WebSocket or HTMX polling) -->
+      <div id="live-ticket-container" hx-get="{% url 'queues:ticket_detail' ticket.public_id %}" hx-trigger="every 10s" hx-swap="innerHTML">
+        {% include "queues/partials/ticket_status_card.html" with ticket=ticket people_ahead=people_ahead estimated_wait=estimated_wait %}
+      </div>
+
+      <!-- Action & Preparation notes -->
+      <div class="mt-6 space-y-4">
+        {% if ticket.status == 'waiting' or ticket.status == 'called' %}
+          <div class="card p-5">
+            <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400">{% translate "What to do now" %}</h3>
+            <ul class="mt-3 space-y-2 text-xs leading-5 text-slate-600">
+              <li>✓ {% translate "Keep this page open on your phone or check your SMS alerts." %}</li>
+              <li>✓ {% translate "Make sure your mandatory physical documents are organized." %}</li>
+              <li>✓ {% translate "Arrive at the waiting area when fewer than 3 people are ahead of you." %}</li>
+            </ul>
+          </div>
+
+          <form method="post" action="{% url 'queues:cancel_ticket' ticket.public_id %}" onsubmit="return confirm('{% translate "Are you sure you want to cancel your queue ticket?" %}')">
+            {% csrf_token %}
+            <button type="submit" class="w-full text-center text-xs font-medium text-red-600 hover:text-red-700 py-2">
+              {% translate "Cancel my ticket" %}
+            </button>
+          </form>
+        {% endif %}
+
+        <div class="text-center pt-2">
+          <a href="{% url 'services:search' %}" class="btn-secondary w-full">
+            {% translate "Find another service" %}
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Real-time WebSocket connection -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const protocol = window.location.protocol === "https:" ? "wss://" : "ws://";
+      const wsUrl = protocol + window.location.host + "/ws/ticket/{{ ticket.public_id }}/";
+      let socket;
+
+      function connectWS() {
+        socket = new WebSocket(wsUrl);
+        socket.onopen = function () {
+          const indicator = document.getElementById("ws-indicator");
+          if (indicator) indicator.className = "h-2 w-2 rounded-full bg-emerald-500 animate-pulse";
+        };
+        socket.onmessage = function (event) {
+          // Trigger HTMX refresh immediately upon WebSocket notification
+          htmx.ajax('GET', '{% url "queues:ticket_detail" ticket.public_id %}', '#live-ticket-container');
+          // If browser notifications allowed, notify sound/alert
+          if ("Notification" in window && Notification.permission === "granted") {
+            new Notification("Linee Queue Alert", {
+              body: "Your ticket status has been updated!",
+              icon: "/static/img/icon.svg"
+            });
+          }
+        };
+        socket.onclose = function () {
+          const indicator = document.getElementById("ws-indicator");
+          if (indicator) indicator.className = "h-2 w-2 rounded-full bg-amber-500";
+          setTimeout(connectWS, 4000);
+        };
+      }
+      try { connectWS(); } catch(e) {}
+    });
+  </script>
+
+  {% include "components/public_footer.html" %}
+{% endblock %}

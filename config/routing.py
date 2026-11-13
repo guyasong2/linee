@@ -1,6 +1,8 @@
-"""WebSocket routes.
+from django.urls import path
 
-Channels consumers are added as the live queue module is implemented.
-"""
+from apps.queues.consumers import BranchQueueConsumer, TicketLiveConsumer
 
-websocket_urlpatterns: list = []
+websocket_urlpatterns = [
+    path("ws/branch/<uuid:branch_id>/", BranchQueueConsumer.as_asgi(), name="ws_branch_queue"),
+    path("ws/ticket/<uuid:ticket_id>/", TicketLiveConsumer.as_asgi(), name="ws_ticket_live"),
+]

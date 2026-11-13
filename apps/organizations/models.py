@@ -158,3 +158,49 @@ class OrganizationMembership(TimeStampedModel):
     def save(self, *args, **kwargs):
         self.full_clean()
         super().save(*args, **kwargs)
+
+
+class Counter(TimeStampedModel, PublicIdModel):
+    class Status(models.TextChoices):
+        OPEN = "open", _("Open")
+        PAUSED = "paused", _("Paused")
+        CLOSED = "closed", _("Closed")
+
+    organization = models.ForeignKey(
+        Organization, on_delete=models.CASCADE, related_name="counters"
+    )
+    branch = models.ForeignKey(Branch, on_delete=models.CASCADE, related_name="counters")
+    name = models.CharField(max_length=80)
+    code = models.CharField(max_length=20)
+    status = models.CharField(max_length=20, choices=Status.choices, default=Status.CLOSED)
+    current_staff = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="active_counters",
+    )
+
+    class Meta:
+        ordering = ("branch__name", "name")
+        constraints = [
+            models.UniqueConstraint(
+                fields=("branch", "code"),
+                name="unique_counter_code_per_branch",
+            )
+        ]
+        verbose_name = "counter"
+        verbose_name_plural = "counters"
+
+    def __str__(self) -> str:
+        return f"{self.name} — {self.branch.name}"
+
+    def clean(self) -> None:
+        super().clean()
+        if self.branch_id and self.branch.organization_id != self.organization_id:
+            raise ValidationError({"branch": "The branch must belong to the same organization."})
+
+    def save(self, *args, **kwargs):
+        self.code = self.code.strip().upper()
+        self.full_clean()
+        super().save(*args, **kwargs)

@@ -37,10 +37,19 @@ def service_detail(request, public_id):
         active_branch_services(),
         public_id=public_id,
     )
+    checklist = getattr(service.service, "checklist", None)
+    latest_version = checklist.latest_version if checklist else None
+    checklist_items = latest_version.items.all() if latest_version else []
+
     return render(
         request,
         "public/service_detail.html",
-        {"service": service, "current_fee": service.current_fee},
+        {
+            "service": service,
+            "current_fee": service.current_fee,
+            "checklist": checklist,
+            "checklist_items": checklist_items,
+        },
     )
 
 
